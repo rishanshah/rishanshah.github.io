@@ -231,7 +231,7 @@ footer hr {
 
 @media screen and (min-width: 40em) {
   .experience h2, .experience p {
-    text-align: left;
+    text-align: center;
   }
 }
 
@@ -315,6 +315,12 @@ footer hr {
   cursor: pointer;
 }
 
+.avatar {
+  display: block;
+  margin:auto;
+
+}
+
 @media screen and (min-width: 40em) {
   .spotlight {
     padding: 6em;
@@ -322,7 +328,9 @@ footer hr {
   }
 
   .spotlight h1, .spotlight p {
-    text-align: left;
+    text-align: middle;
   }
+
+
 
 }
