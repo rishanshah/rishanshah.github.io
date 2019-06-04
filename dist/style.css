@@ -292,6 +292,7 @@ footer hr {
   margin-right: auto;
   display: block;
   border: 5px solid #e4382c;
+  margin-bottom: 20px;
 }
 
 .spotlight h1 {
@@ -335,6 +336,13 @@ footer hr {
     text-align: middle;
   }
 
+  .spotlight img {
+    width: 60%;
+    width: 350px;
+    height: 350px;
+    border-radius: 175px;
+    max-width: 350px;
 
+  }
 
 }
