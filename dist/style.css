@@ -284,10 +284,14 @@ footer hr {
 
 .spotlight img {
   width: 60%;
-  max-width: 250px;
+  width: 350px;
+  height: 350px;
+  border-radius: 175px;
+  max-width: 350px;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  border: 5px solid #e4382c;
 }
 
 .spotlight h1 {
