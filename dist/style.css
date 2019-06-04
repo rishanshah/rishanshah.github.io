@@ -326,6 +326,7 @@ footer hr {
 
 }
 
+
 @media screen and (min-width: 40em) {
   .spotlight {
     padding: 6em;
@@ -344,5 +345,18 @@ footer hr {
     max-width: 350px;
 
   }
+@media only screen and (max-width:900px) and (orientation: landscape) {
+
+  .spotlight img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    max-width: 350px;
+    margin-right: 20px;
+    margin-top: 20px;
+
+
+  }
+ }
 
 }
