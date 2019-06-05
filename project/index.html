@@ -9129,15 +9129,15 @@ label {
 }
 /* Flexible box model classes */
 /* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box 
+/* This file is a compatability layer.  It allows the usage of flexible box
 model layouts accross multiple browsers, including older browsers.  The newest,
 universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this 
+`Modern browsers` comments below).  Browsers that are known to implement this
 new spec completely include:
 
     Firefox 28.0+
     Chrome 29.0+
-    Internet Explorer 11+ 
+    Internet Explorer 11+
     Opera 17.0+
 
 Browsers not listed, including Safari, are supported via the styling under the
@@ -12519,7 +12519,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for 
+  /* This injects handle bars (a short, wide = symbol) for
         the resize handle. */
 }
 div#pager .ui-resizable-handle::after {
@@ -13018,7 +13018,7 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
-    
+
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
@@ -13072,14 +13072,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
@@ -13227,7 +13227,7 @@ You should consider upgrading via the &#39;pip install --upgrade pip&#39; comman
         <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.5</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_min</span> <span class="o">=</span> <span class="mf">0.2</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_decay</span> <span class="o">=</span> <span class="mf">0.995</span>
-        
+
     <span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
         <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
@@ -13236,22 +13236,22 @@ You should consider upgrading via the &#39;pip install --upgrade pip&#39; comman
         <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span>
                       <span class="n">optimizer</span><span class="o">=</span><span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">model</span>
-        
+
     <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span><span class="o">&lt;</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
         <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">action</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">action</span>
-            
+
     <span class="k">def</span> <span class="nf">remember</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">))</span>
-        
+
     <span class="k">def</span> <span class="nf">revise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minibatchsize</span><span class="p">):</span>
         <span class="n">minibatch</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">,</span> <span class="n">minibatchsize</span><span class="p">)</span>
-             
+
         <span class="k">for</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span><span class="n">done</span> <span class="ow">in</span> <span class="n">minibatch</span><span class="p">:</span>
-            <span class="n">target_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">next_state</span><span class="p">)]))</span>                 
+            <span class="n">target_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">next_state</span><span class="p">)]))</span>
             <span class="c1"># if done, make our target reward</span>
             <span class="n">target</span> <span class="o">=</span> <span class="n">reward</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
@@ -13266,7 +13266,7 @@ You should consider upgrading via the &#39;pip install --upgrade pip&#39; comman
             <span class="n">target_f</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">action</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span>
             <span class="c1">#Train the Neural Net with the state and target_f</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">state</span><span class="p">]),</span> <span class="n">target_f</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-            
+
             <span class="c1">#reduce the randomness of the model gradually</span>
             <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span><span class="o">&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon_min</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span><span class="o">*=</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon_decay</span>
@@ -13295,11 +13295,11 @@ You should consider upgrading via the &#39;pip install --upgrade pip&#39; comman
 
 <span class="k">class</span> <span class="nc">ArrivalSim</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">):</span>
     <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;render.modes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;human&#39;</span><span class="p">]}</span>
-    
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>  <span class="c1">#increase or decrease</span>
-        
+
 <span class="c1">#         super(CustomEnv, self).__init__()</span>
 <span class="c1">#         # Define action and observation space</span>
 <span class="c1">#         # They must be gym.spaces objects</span>
@@ -13308,11 +13308,11 @@ You should consider upgrading via the &#39;pip install --upgrade pip&#39; comman
 <span class="c1">#         # Example for using image as input:</span>
 <span class="c1">#         self.observation_space = spaces.Box(low=0, high=255,</span>
 <span class="c1">#                                             shape=(HEIGHT, WIDTH, N_CHANNELS), dtype=np.uint8)</span>
-        
+
     <span class="k">def</span> <span class="nf">_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span>
-    
-    
+
+
     <span class="k">def</span> <span class="nf">_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">action</span><span class="p">):</span>
         <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
@@ -13324,25 +13324,25 @@ You should consider upgrading via the &#39;pip install --upgrade pip&#39; comman
         <span class="k">elif</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_reward</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
             <span class="n">done</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span>
-        
+
 
     <span class="k">def</span> <span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
-        
-        
+
+
     <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
         <span class="k">if</span><span class="p">(</span><span class="n">action</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="o">+=</span> <span class="mf">0.25</span>
         <span class="k">elif</span><span class="p">(</span><span class="n">action</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="o">-=</span><span class="mf">0.25</span>
-            
-            
+
+
     <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">maxcust</span><span class="p">,</span><span class="n">gamma</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">maxcust</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">gamma</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">))))</span>
-    
+
     <span class="k">def</span> <span class="nf">_get_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        
+
 </pre></div>
 
     </div>
@@ -13406,8 +13406,8 @@ $$\lambda = \frac{2*maxcustomers}{1+ e^{\gamma x}} = sigmoid(- \gamma x), x&gt;=
     <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">_state</span><span class="p">()</span>
     <span class="n">total_profit</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">time_t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
-        
-    
+
+
         <span class="c1"># turn this on if you want to render</span>
         <span class="c1"># env.render()</span>
         <span class="c1"># Decide action</span>
@@ -13419,14 +13419,14 @@ $$\lambda = \frac{2*maxcustomers}{1+ e^{\gamma x}} = sigmoid(- \gamma x), x&gt;=
         <span class="c1"># Remember the previous state, action, reward, and done</span>
         <span class="n">agent</span><span class="o">.</span><span class="n">remember</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span><span class="n">done</span><span class="p">)</span>
         <span class="c1"># make next_state the new current state for the next frame.</span>
-        
+
         <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
         <span class="n">total_profit</span> <span class="o">+=</span> <span class="n">env</span><span class="o">.</span><span class="n">_get_reward</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final Price (End Of Episode </span><span class="si">{}</span><span class="s2">): </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">step</span><span class="p">,</span><span class="n">env</span><span class="o">.</span><span class="n">price</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Profit: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_profit</span><span class="p">))</span>
     <span class="n">plotdata</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">step</span><span class="p">,</span><span class="n">total_profit</span><span class="p">])</span>
     <span class="n">agent</span><span class="o">.</span><span class="n">revise</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
-    
+
 </pre></div>
 
     </div>
@@ -13450,1472 +13450,12 @@ Total Profit: 16.00056824929089
 Final Price (End Of Episode 2): 1.1241151874343691
 Total Profit: 7343.765613208572
 Final Price (End Of Episode 3): 88.11090392819665
-Total Profit: 981.2714009091501
-Final Price (End Of Episode 4): -4.3835843705042254
-Total Profit: 57.414603758904164
-Final Price (End Of Episode 5): -4.939896093803711
-Total Profit: 0
-Final Price (End Of Episode 6): -2.574280678938538
-Total Profit: 4.7444216686594665
-Final Price (End Of Episode 7): -1.6626766447782777
-Total Profit: 2.4450539462082213
-Final Price (End Of Episode 8): -1.0989363367465557
-Total Profit: 29.626583754247985
-Final Price (End Of Episode 9): 0.3940573757426098
-Total Profit: 3175.5278542815818
-Final Price (End Of Episode 10): -3.259572396422425
-Total Profit: 25.34907704327508
-Final Price (End Of Episode 11): -1.8746244023149816
-Total Profit: 0
-Final Price (End Of Episode 12): -1.1815681808224237
-Total Profit: 25.93534101364553
-Final Price (End Of Episode 13): -0.8678900453571718
-Total Profit: 0
-Final Price (End Of Episode 14): -0.6798087891611063
-Total Profit: 132.71033192278304
-Final Price (End Of Episode 15): 0.528193616229915
-Total Profit: 4373.573142255189
-Final Price (End Of Episode 16): -4.9571420291344594
-Total Profit: 9.692904339335819
-Final Price (End Of Episode 17): -5.566030547521471
-Total Profit: 24.670228243754664
-Final Price (End Of Episode 18): -4.950666539036471
-Total Profit: 0
-Final Price (End Of Episode 19): -4.236300011352061
-Total Profit: 15.068599114539282
-Final Price (End Of Episode 20): -4.083065366817053
-Total Profit: 31.854770654635807
-Final Price (End Of Episode 21): -4.423592664906767
-Total Profit: 9.146774089754846
-Final Price (End Of Episode 22): -3.88398830551703
-Total Profit: 10.35451455725068
-Final Price (End Of Episode 23): -3.147973352085171
-Total Profit: 2.65269284578555
-Final Price (End Of Episode 24): -4.9361564013261585
-Total Profit: 8.245274742975173
-Final Price (End Of Episode 25): -2.3772781801164933
-Total Profit: 0
-Final Price (End Of Episode 26): -0.6813280857465431
-Total Profit: 14.644146709285813
-Final Price (End Of Episode 27): 0.5413541854785517
-Total Profit: 4537.5746878845275
-Final Price (End Of Episode 28): -0.9379860141937439
-Total Profit: 8.042573418056499
-Final Price (End Of Episode 29): 101.12031659753063
-Total Profit: 863.6684618320279
-Final Price (End Of Episode 30): 98.56926709663092
-Total Profit: 906.4934838208239
-Final Price (End Of Episode 31): 0.384110364019995
-Total Profit: 5444.300827775742
-Final Price (End Of Episode 32): 94.48242687533417
-Total Profit: 787.9876832155581
-Final Price (End Of Episode 33): 0.28378086360605703
-Total Profit: 4554.312107617379
-Final Price (End Of Episode 34): 0.30145844420776124
-Total Profit: 4690.32081647872
-Final Price (End Of Episode 35): 0.39687898432541946
-Total Profit: 3159.237043680007
-Final Price (End Of Episode 36): -97.30562230947035
-Total Profit: 9.858841478008053
-Final Price (End Of Episode 37): -98.92317509501717
-Total Profit: 2.0742724345363324
-Final Price (End Of Episode 38): -103.67228833226116
-Total Profit: 1.3988100192992614
-Final Price (End Of Episode 39): -0.654395972141379
-Total Profit: 31.60651029604835
-Final Price (End Of Episode 40): -0.2903923073883766
-Total Profit: 145.28423093639282
-Final Price (End Of Episode 41): -0.46326049635011624
-Total Profit: 80.76992350388845
-Final Price (End Of Episode 42): 0.2939197181508295
-Total Profit: 466.33259480122774
-Final Price (End Of Episode 43): -0.038798657091936084
-Total Profit: 160.75051720620763
-Final Price (End Of Episode 44): 0.0701850115989121
-Total Profit: 572.0839548370498
-Final Price (End Of Episode 45): 0.24026004245500165
-Total Profit: 1481.8588614415935
-Final Price (End Of Episode 46): 0.2837953782213365
-Total Profit: 2072.0151667522896
-Final Price (End Of Episode 47): 0.4233155435084758
-Total Profit: 3501.298997286587
-Final Price (End Of Episode 48): 0.21040007413915807
-Total Profit: 3735.477977942184
-Final Price (End Of Episode 49): 0.13151782185724903
-Total Profit: 3061.005411724754
-Final Price (End Of Episode 50): 0.024301679711423274
-Total Profit: 2046.0036745742425
-Final Price (End Of Episode 51): 0.12530905693748684
-Total Profit: 3023.4805992299785
-Final Price (End Of Episode 52): 0.022516700028026193
-Total Profit: 1779.5009815205076
-Final Price (End Of Episode 53): -0.03094090531446425
-Total Profit: 1454.2667537857603
-Final Price (End Of Episode 54): 0.5084049688205914
-Total Profit: 4359.240999835351
-Final Price (End Of Episode 55): 0.7414585371744793
-Total Profit: 4138.90759654387
-Final Price (End Of Episode 56): 0.38686920725367635
-Total Profit: 2985.3833188371445
-Final Price (End Of Episode 57): 0.15957311131874397
-Total Profit: 3162.155833756045
-Final Price (End Of Episode 58): 0.3671052965014949
-Total Profit: 2914.0661492511313
-Final Price (End Of Episode 59): 0.18975603933891827
-Total Profit: 3585.440343259994
-Final Price (End Of Episode 60): 0.10181675432118442
-Total Profit: 2574.0397477959896
-Final Price (End Of Episode 61): 0.1214762654226188
-Total Profit: 2892.0705210090714
-Final Price (End Of Episode 62): 0.42275110805008
-Total Profit: 3332.123624972719
-Final Price (End Of Episode 63): -0.0070318984301568355
-Total Profit: 1452.4792603996004
-Final Price (End Of Episode 64): 0.6081846293839472
-Total Profit: 5191.238798620564
-Final Price (End Of Episode 65): 0.30105536143418
-Total Profit: 6763.481313075331
-Final Price (End Of Episode 66): 1.0043578419448287
-Total Profit: 6561.353212943489
-Final Price (End Of Episode 67): 0.32816148491034935
-Total Profit: 2542.8764323882388
-Final Price (End Of Episode 68): -0.15360761516665633
-Total Profit: 2668.9904119194443
-Final Price (End Of Episode 69): 0.3931830275660344
-Total Profit: 5681.774310094408
-Final Price (End Of Episode 70): -0.40304341417959566
-Total Profit: 56.391771940047015
-Final Price (End Of Episode 71): 0.7729416791160744
-Total Profit: 8699.00555638328
-Final Price (End Of Episode 72): 0.3669560790288633
-Total Profit: 2786.2977681015927
-Final Price (End Of Episode 73): 0.6134996828763343
-Total Profit: 2803.157964388248
-Final Price (End Of Episode 74): -0.0015819797993001927
-Total Profit: 1525.0380372452514
-Final Price (End Of Episode 75): 1.8429569936943504
-Total Profit: 13162.053309938628
-Final Price (End Of Episode 76): 0.5717110023701728
-Total Profit: 4764.758480846734
-Final Price (End Of Episode 77): -17.72164419736803
-Total Profit: 1.6162807500223986
-Final Price (End Of Episode 78): 2.3363823744011616
-Total Profit: 13531.121545760849
-Final Price (End Of Episode 79): 0.12941074417498843
-Total Profit: 973.6322468188317
-Final Price (End Of Episode 80): 2.775138433236533
-Total Profit: 14184.304738005574
-Final Price (End Of Episode 81): 1.5239148278519403
-Total Profit: 11320.460310803695
-Final Price (End Of Episode 82): 0.3119314076558456
-Total Profit: 2225.666404720608
-Final Price (End Of Episode 83): 1.5413236664650336
-Total Profit: 12375.877942816427
-Final Price (End Of Episode 84): 1.1731189744095638
-Total Profit: 11083.056009668382
-Final Price (End Of Episode 85): 1.0709296196513112
-Total Profit: 10405.341051853886
-Final Price (End Of Episode 86): 101.70721175014697
-Total Profit: 812.5889962874754
-Final Price (End Of Episode 87): -2.087430820349338
-Total Profit: 55.33620710340724
-Final Price (End Of Episode 88): -0.710172364723456
-Total Profit: 3.7437977159951346
-Final Price (End Of Episode 89): 0.4340064101534513
-Total Profit: 5749.918268134281
-Final Price (End Of Episode 90): 0.41406748741515775
-Total Profit: 5774.99060599659
-Final Price (End Of Episode 91): 0.41109514515082624
-Total Profit: 5671.012864775372
-Final Price (End Of Episode 92): 0.6650749810845373
-Total Profit: 5685.416898966456
-Final Price (End Of Episode 93): 0.3941920709928599
-Total Profit: 5485.134199268657
-Final Price (End Of Episode 94): 0.4585932595186184
-Total Profit: 6233.591670011579
-Final Price (End Of Episode 95): 0.6686207879884827
-Total Profit: 5796.158970614246
-Final Price (End Of Episode 96): 0.3269059460666106
-Total Profit: 4954.581990508053
-Final Price (End Of Episode 97): 0.28951660421512804
-Total Profit: 4647.687539246932
-Final Price (End Of Episode 98): 0.6971055406320423
-Total Profit: 6108.694498530314
-Final Price (End Of Episode 99): 0.5775455786255455
-Total Profit: 4997.6761757420945
-Final Price (End Of Episode 100): 0.6146163197081025
-Total Profit: 5198.4201382752535
-Final Price (End Of Episode 101): 0.772215273288726
-Total Profit: 6605.033210208924
-Final Price (End Of Episode 102): 0.44183503343896047
-Total Profit: 5886.077786392457
-Final Price (End Of Episode 103): 0.4637528920053453
-Total Profit: 6228.999188356236
-Final Price (End Of Episode 104): 0.4604048218763428
-Total Profit: 6161.155280654903
-Final Price (End Of Episode 105): 0.3054387399144969
-Total Profit: 4658.868961710147
-Final Price (End Of Episode 106): 0.27296137577278
-Total Profit: 4250.87899647836
-Final Price (End Of Episode 107): 0.244631835997566
-Total Profit: 4043.398078758358
-Final Price (End Of Episode 108): 0.5735942733103878
-Total Profit: 4920.541416999386
-Final Price (End Of Episode 109): 0.7286445625027684
-Total Profit: 6498.76932009189
-Final Price (End Of Episode 110): 0.7405918237343616
-Total Profit: 6484.483044777928
-Final Price (End Of Episode 111): 0.5056212887830673
-Total Profit: 6432.911106446541
-Final Price (End Of Episode 112): 0.4581877479482097
-Total Profit: 6155.508798146703
-Final Price (End Of Episode 113): 0.7619849577140707
-Total Profit: 6680.57967869255
-Final Price (End Of Episode 114): 0.8080500549169225
-Total Profit: 6965.1833654246275
-Final Price (End Of Episode 115): 0.5914382902305224
-Total Profit: 7227.593854747803
-Final Price (End Of Episode 116): 0.7119672517949018
-Total Profit: 8304.797271157724
-Final Price (End Of Episode 117): -0.21404036363296475
-Total Profit: 377.02166474835235
-Final Price (End Of Episode 118): 102.8999104827006
-Total Profit: 680.8824546093193
-Final Price (End Of Episode 119): 3.6499494733137414
-Total Profit: 13042.258352278994
-Final Price (End Of Episode 120): 0.9534923815107346
-Total Profit: 9908.408955609702
-Final Price (End Of Episode 121): 0.9208204357930323
-Total Profit: 9691.3668177154
-Final Price (End Of Episode 122): 1.3104509261416881
-Total Profit: 8701.380111312026
-Final Price (End Of Episode 123): 1.3752701901144588
-Total Profit: 9573.179107151964
-Final Price (End Of Episode 124): 0.7597766784720732
-Total Profit: 8328.47068012421
-Final Price (End Of Episode 125): 0.6989549802424746
-Total Profit: 8174.989111949218
-Final Price (End Of Episode 126): 0.41730782946562206
-Total Profit: 7984.849470859115
-Final Price (End Of Episode 127): 0.6465760129999734
-Total Profit: 7805.754739728724
-Final Price (End Of Episode 128): 0.7952074799606543
-Total Profit: 8720.927079215586
-Final Price (End Of Episode 129): 0.8604795981867075
-Total Profit: 9327.997478444435
-Final Price (End Of Episode 130): 0.7862245434380604
-Total Profit: 8814.083690192054
-Final Price (End Of Episode 131): 0.848684302097074
-Total Profit: 9125.632457110934
-Final Price (End Of Episode 132): 1.2036190025289528
-Total Profit: 8211.222684696682
-Final Price (End Of Episode 133): 1.0198905851754123
-Total Profit: 8631.859113860804
-Final Price (End Of Episode 134): 0.8943542683699399
-Total Profit: 9324.265655597623
-Final Price (End Of Episode 135): 0.9264704374457384
-Total Profit: 9592.704471867448
-Final Price (End Of Episode 136): 0.05150826913366369
-Total Profit: 496.3662057624522
-Final Price (End Of Episode 137): 101.54339779141893
-Total Profit: 698.1862434375671
-Final Price (End Of Episode 138): 94.82200076328897
-Total Profit: 785.2182434891832
-Final Price (End Of Episode 139): 89.96178244862226
-Total Profit: 959.781562754587
-Final Price (End Of Episode 140): 52.08422931116712
-Total Profit: 698.7284743476151
-Final Price (End Of Episode 141): 8.256363785953159
-Total Profit: 3559.402813137105
-Final Price (End Of Episode 142): 10.17643911131398
-Total Profit: 2425.043651653336
-Final Price (End Of Episode 143): 48.67578910162936
-Total Profit: 658.6188677486826
-Final Price (End Of Episode 144): 30.779114243787724
-Total Profit: 841.2874437682843
-Final Price (End Of Episode 145): 12.708131545559961
-Total Profit: 1026.486175028988
-Final Price (End Of Episode 146): 35.630854589699375
-Total Profit: 940.0291827501295
-Final Price (End Of Episode 147): 28.425462348137213
-Total Profit: 878.2956728638129
-Final Price (End Of Episode 148): 24.931895173916704
-Total Profit: 804.0418983052593
-Final Price (End Of Episode 149): 31.437733568785013
-Total Profit: 824.559793608963
-Final Price (End Of Episode 150): 14.834052669911916
-Total Profit: 1118.8882223328694
-Final Price (End Of Episode 151): 32.1761291794804
-Total Profit: 765.4981033828255
-Final Price (End Of Episode 152): 21.46503118694237
-Total Profit: 741.4989194655182
-Final Price (End Of Episode 153): 9.66649435771376
-Total Profit: 2406.2533819791906
-Final Price (End Of Episode 154): 29.90381360423164
-Total Profit: 769.9542473478875
-Final Price (End Of Episode 155): 31.115550184230074
-Total Profit: 883.4274977155898
-Final Price (End Of Episode 156): 31.07944589616521
-Total Profit: 746.3454311610677
-Final Price (End Of Episode 157): 30.534152167332174
-Total Profit: 720.6172809963829
-Final Price (End Of Episode 158): 24.123346800728612
-Total Profit: 780.4974274214977
-Final Price (End Of Episode 159): 29.52106439670308
-Total Profit: 998.7051413592459
-Final Price (End Of Episode 160): 8.78419223480772
-Total Profit: 3358.8954223265396
-Final Price (End Of Episode 161): 27.01890778267031
-Total Profit: 836.0000784133019
-Final Price (End Of Episode 162): 26.323322859965003
-Total Profit: 742.6107464113568
-Final Price (End Of Episode 163): 14.81850526616632
-Total Profit: 888.0409060664066
-Final Price (End Of Episode 164): 26.578637084596497
-Total Profit: 740.816545318317
-Final Price (End Of Episode 165): 13.817577855146332
-Total Profit: 913.8468167116067
-Final Price (End Of Episode 166): 26.52756553438035
-Total Profit: 980.7934054673318
-Final Price (End Of Episode 167): 24.591689164825425
-Total Profit: 780.6314119752464
-Final Price (End Of Episode 168): 24.8234027080153
-Total Profit: 965.3740069885604
-Final Price (End Of Episode 169): 9.212883630651628
-Total Profit: 3083.7093025242857
-Final Price (End Of Episode 170): 25.0776432054679
-Total Profit: 964.4174132012517
-Final Price (End Of Episode 171): 25.31926998072319
-Total Profit: 909.1096852386278
-Final Price (End Of Episode 172): 23.872199399690395
-Total Profit: 1017.9805814873041
-Final Price (End Of Episode 173): 6.667592044589896
-Total Profit: 6534.164076107168
-Final Price (End Of Episode 174): 4.814536889630411
-Total Profit: 9840.293763340922
-Final Price (End Of Episode 175): 2.6212359618235244
-Total Profit: 14213.490373053868
-Final Price (End Of Episode 176): 0.8922048127608138
-Total Profit: 7767.8648259993015
-Final Price (End Of Episode 177): 0.4647855913621828
-Total Profit: 8047.183563731458
-Final Price (End Of Episode 178): 1.3555575409596816
-Total Profit: 10944.195424049663
-Final Price (End Of Episode 179): 1.1415813588340664
-Total Profit: 11048.38279502211
-Final Price (End Of Episode 180): 1.1337581546998323
-Total Profit: 7705.654813540125
-Final Price (End Of Episode 181): 0.5173512871560657
-Total Profit: 8695.646721852394
-Final Price (End Of Episode 182): 0.8293873758012693
-Total Profit: 6961.290224523107
-Final Price (End Of Episode 183): 1.5847385484063405
-Total Profit: 11821.74142322302
-Final Price (End Of Episode 184): 1.2955099647374064
-Total Profit: 11694.826165698381
-Final Price (End Of Episode 185): 1.1518843847739837
-Total Profit: 11857.639402488128
-Final Price (End Of Episode 186): 1.720614908407473
-Total Profit: 12429.81437894607
-Final Price (End Of Episode 187): -0.6093522303372056
-Total Profit: 32.23744890447725
-Final Price (End Of Episode 188): 95.88749515754273
-Total Profit: 980.511090844933
-Final Price (End Of Episode 189): 46.42505567956363
-Total Profit: 705.888084697453
-Final Price (End Of Episode 190): 10.792693251681843
-Total Profit: 1748.5896196929193
-Final Price (End Of Episode 191): 15.389841796593092
-Total Profit: 868.7783925039844
-Final Price (End Of Episode 192): 12.742539564582373
-Total Profit: 1216.1088550351387
-Final Price (End Of Episode 193): 11.79661317492001
-Total Profit: 1356.530742971202
-Final Price (End Of Episode 194): 13.114468050990506
-Total Profit: 1077.3065878297966
-Final Price (End Of Episode 195): 14.765454677387922
-Total Profit: 1006.8400391842121
-Final Price (End Of Episode 196): 15.889503007916723
-Total Profit: 898.5856918208459
-Final Price (End Of Episode 197): 12.42217065680455
-Total Profit: 1093.7549097514361
-Final Price (End Of Episode 198): 13.716391627907477
-Total Profit: 1216.8042865118027
-Final Price (End Of Episode 199): 13.50285205324396
-Total Profit: 1171.9012488250903
-Final Price (End Of Episode 200): 14.01139890719033
-Total Profit: 1129.8528306303324
-Final Price (End Of Episode 201): 14.877317976377217
-Total Profit: 957.5078075509794
-Final Price (End Of Episode 202): 16.85014785579579
-Total Profit: 861.4397732090663
-Final Price (End Of Episode 203): 14.293555804957364
-Total Profit: 1016.3620808061855
-Final Price (End Of Episode 204): 12.751001568586705
-Total Profit: 1646.8926148859857
-Final Price (End Of Episode 205): 11.656727203621205
-Total Profit: 1516.0747028782841
-Final Price (End Of Episode 206): 11.95921936984237
-Total Profit: 1570.260494733658
-Final Price (End Of Episode 207): 12.917442559573878
-Total Profit: 1194.6362443594057
-Final Price (End Of Episode 208): 12.753662103389587
-Total Profit: 1376.9924300185796
-Final Price (End Of Episode 209): 12.383920995382784
-Total Profit: 1595.9065474605338
-Final Price (End Of Episode 210): 11.851954151197237
-Total Profit: 1838.4938550282707
-Final Price (End Of Episode 211): 12.413742409829771
-Total Profit: 1272.4545701942925
-Final Price (End Of Episode 212): 12.442249641890438
-Total Profit: 1234.0996529523063
-Final Price (End Of Episode 213): 13.04717943709532
-Total Profit: 1437.7020308977962
-Final Price (End Of Episode 214): 12.337456026593355
-Total Profit: 1492.3490001641615
-Final Price (End Of Episode 215): 10.81732030206088
-Total Profit: 1653.2732154512357
-Final Price (End Of Episode 216): 12.131309407513182
-Total Profit: 1372.165683583477
-Final Price (End Of Episode 217): 12.767468413249132
-Total Profit: 1038.5417874447753
-Final Price (End Of Episode 218): 13.457527861255146
-Total Profit: 1110.2110534053293
-Final Price (End Of Episode 219): 12.52103494101741
-Total Profit: 1467.4091378225476
-Final Price (End Of Episode 220): 11.278055802383314
-Total Profit: 1715.7098098460735
-Final Price (End Of Episode 221): 9.044369588476677
-Total Profit: 3053.6208386004378
-Final Price (End Of Episode 222): 9.362232118957099
-Total Profit: 2837.7087396273887
-Final Price (End Of Episode 223): 9.608363236394771
-Total Profit: 2727.1730755426242
-Final Price (End Of Episode 224): 8.162720909926405
-Total Profit: 3500.2760105238503
-Final Price (End Of Episode 225): 3.8862280424600097
-Total Profit: 12673.47928882242
-Final Price (End Of Episode 226): 0.9578780876223378
-Total Profit: 8274.768800527927
-Final Price (End Of Episode 227): 0.6173953403109591
-Total Profit: 7172.703867245358
-Final Price (End Of Episode 228): 0.32814789122055577
-Total Profit: 7108.111786785439
-Final Price (End Of Episode 229): 0.5896711079318089
-Total Profit: 7396.687948852272
-Final Price (End Of Episode 230): 0.5392182406063684
-Total Profit: 6907.438301659565
-Final Price (End Of Episode 231): 0.8391815335576671
-Total Profit: 7108.3446328956115
-Final Price (End Of Episode 232): 0.6980493991907168
-Total Profit: 8385.383523282075
-Final Price (End Of Episode 233): 0.730930116189187
-Total Profit: 8387.106526322508
-Final Price (End Of Episode 234): 0.8135400773549037
-Total Profit: 8990.553578429943
-Final Price (End Of Episode 235): 1.0967175665507711
-Total Profit: 9117.689095768203
-Final Price (End Of Episode 236): 1.3278355183677213
-Total Profit: 8965.959114591345
-Final Price (End Of Episode 237): 0.9723746450217288
-Total Profit: 10258.319108844953
-Final Price (End Of Episode 238): 0.9680147491545119
-Total Profit: 9999.708476905827
-Final Price (End Of Episode 239): 1.211285794320995
-Total Profit: 9958.43430495192
-Final Price (End Of Episode 240): 1.0507052535691241
-Total Profit: 10537.953556400813
-Final Price (End Of Episode 241): 1.2986110281961238
-Total Profit: 10248.221495223606
-Final Price (End Of Episode 242): 1.0769533843696686
-Total Profit: 10380.136302880446
-Final Price (End Of Episode 243): 1.3415416790244739
-Total Profit: 10669.489150674883
-Final Price (End Of Episode 244): 0.8410628375042601
-Total Profit: 9114.378600865726
-Final Price (End Of Episode 245): 1.4554628206911941
-Total Profit: 11297.02896819247
-Final Price (End Of Episode 246): 1.0376344546694836
-Total Profit: 10357.513861040365
-Final Price (End Of Episode 247): 1.0271606593752827
-Total Profit: 10407.807692405702
-Final Price (End Of Episode 248): 1.0907189176989691
-Total Profit: 10636.352816314651
-Final Price (End Of Episode 249): 1.306847360908522
-Total Profit: 11650.058559164388
-Final Price (End Of Episode 250): 1.9306219832396923
-Total Profit: 13052.343110387186
-Final Price (End Of Episode 251): -0.2651650873083118
-Total Profit: 54.39115710179607
-Final Price (End Of Episode 252): 105.14788809785185
-Total Profit: 717.0354364748896
-Final Price (End Of Episode 253): 100.19321760817539
-Total Profit: 717.6679668274952
-Final Price (End Of Episode 254): 35.80857118260052
-Total Profit: 960.324200362381
-Final Price (End Of Episode 255): 4.57101374879523
-Total Profit: 11154.419801862798
-Final Price (End Of Episode 256): 2.1570657573758627
-Total Profit: 13022.98169761748
-Final Price (End Of Episode 257): 0.9258632172106274
-Total Profit: 9721.502190038053
-Final Price (End Of Episode 258): 1.263038840923227
-Total Profit: 10109.805927741345
-Final Price (End Of Episode 259): 1.138484014955771
-Total Profit: 10834.799998519036
-Final Price (End Of Episode 260): 1.3859647966592745
-Total Profit: 10987.617414105622
-Final Price (End Of Episode 261): 0.9946284415316109
-Total Profit: 11432.376000555076
-Final Price (End Of Episode 262): 1.1076196364284385
-Total Profit: 10414.467978018163
-Final Price (End Of Episode 263): 1.3813755871476212
-Total Profit: 10937.6948100382
-Final Price (End Of Episode 264): 1.105027635380606
-Total Profit: 10657.49042781129
-Final Price (End Of Episode 265): 1.171290225357339
-Total Profit: 11129.914963622774
-Final Price (End Of Episode 266): 1.5855449042470329
-Total Profit: 11719.948310687452
-Final Price (End Of Episode 267): 100.61982703685575
-Total Profit: 658.7998725505353
-Final Price (End Of Episode 268): 16.017922080066857
-Total Profit: 816.4753256297516
-Final Price (End Of Episode 269): 102.13908647932199
-Total Profit: 840.6660412515145
-Final Price (End Of Episode 270): 101.70110413558095
-Total Profit: 905.8099481993916
-Final Price (End Of Episode 271): 104.15611408670637
-Total Profit: 727.5907498500051
-Final Price (End Of Episode 272): 100.86527962586658
-Total Profit: 814.9727027253117
-Final Price (End Of Episode 273): 94.94582950404956
-Total Profit: 992.902516245356
-Final Price (End Of Episode 274): 95.31635419986718
-Total Profit: 789.6703209661315
-Final Price (End Of Episode 275): 101.50155591802877
-Total Profit: 883.6254790475638
-Final Price (End Of Episode 276): 98.45868477740696
-Total Profit: 749.8322379132276
-Final Price (End Of Episode 277): 106.83375021333788
-Total Profit: 636.0125490677117
-Final Price (End Of Episode 278): 97.09079851660468
-Total Profit: 932.4537799407547
-Final Price (End Of Episode 279): 96.08005500155338
-Total Profit: 736.9645754116443
-Final Price (End Of Episode 280): 104.55905011552485
-Total Profit: 598.0500755309914
-Final Price (End Of Episode 281): 96.69333997011503
-Total Profit: 800.2092483747512
-Final Price (End Of Episode 282): 99.57635142947703
-Total Profit: 764.2034031442157
-Final Price (End Of Episode 283): 98.57062597173845
-Total Profit: 1123.8904353388236
-Final Price (End Of Episode 284): 101.96129533380395
-Total Profit: 661.1994294312216
-Final Price (End Of Episode 285): 102.26602545621071
-Total Profit: 683.6730403297228
-Final Price (End Of Episode 286): 99.83998275167727
-Total Profit: 823.9247910065375
-Final Price (End Of Episode 287): 98.61679063075786
-Total Profit: 875.5718861656926
-Final Price (End Of Episode 288): 99.26996623217538
-Total Profit: 751.7215918116686
-Final Price (End Of Episode 289): 105.71254134549781
-Total Profit: 565.0953969900813
-Final Price (End Of Episode 290): 97.6649456170438
-Total Profit: 815.7595008574835
-Final Price (End Of Episode 291): 98.34579734624018
-Total Profit: 702.9212135190774
-Final Price (End Of Episode 292): 100.5535515604364
-Total Profit: 760.9403290539744
-Final Price (End Of Episode 293): 96.72959701250505
-Total Profit: 602.7665069011716
-Final Price (End Of Episode 294): 100.15085053972325
-Total Profit: 771.8529739851473
-Final Price (End Of Episode 295): 98.25989543043777
-Total Profit: 676.9988769484279
-Final Price (End Of Episode 296): 101.97936004022722
-Total Profit: 938.3332929933931
-Final Price (End Of Episode 297): 101.8053072446325
-Total Profit: 989.7379819388824
-Final Price (End Of Episode 298): 101.24811294137842
-Total Profit: 730.0169129928754
-Final Price (End Of Episode 299): 99.56322744610443
-Total Profit: 720.5997204812868
-Final Price (End Of Episode 300): 101.80722210920781
-Total Profit: 740.7721905781875
-Final Price (End Of Episode 301): 103.33657491832412
-Total Profit: 817.5396009056129
-Final Price (End Of Episode 302): 103.10649383611249
-Total Profit: 734.9202248003975
-Final Price (End Of Episode 303): 104.6922386502755
-Total Profit: 860.9577091920175
-Final Price (End Of Episode 304): 99.12422295049193
-Total Profit: 815.1861769695366
-Final Price (End Of Episode 305): 100.31946376419069
-Total Profit: 710.7136076240573
-Final Price (End Of Episode 306): 94.93240712062794
-Total Profit: 755.0823451762624
-Final Price (End Of Episode 307): 97.98029426149553
-Total Profit: 691.6794506037938
-Final Price (End Of Episode 308): 98.83419682939879
-Total Profit: 863.0453156543858
-Final Price (End Of Episode 309): 106.4370324059941
-Total Profit: 650.4120923268923
-Final Price (End Of Episode 310): 102.9783855992498
-Total Profit: 721.7325902432079
-Final Price (End Of Episode 311): 102.06274016768532
-Total Profit: 897.4542553361547
-Final Price (End Of Episode 312): 103.61861983640709
-Total Profit: 723.0273558299161
-Final Price (End Of Episode 313): 96.0320578773493
-Total Profit: 949.2143084867055
-Final Price (End Of Episode 314): 103.2036558512445
-Total Profit: 900.2468654723266
-Final Price (End Of Episode 315): 101.5602829788857
-Total Profit: 848.8118766369668
-Final Price (End Of Episode 316): 101.67717066629535
-Total Profit: 759.3619785448769
-Final Price (End Of Episode 317): 102.83663021041164
-Total Profit: 744.0388650280923
-Final Price (End Of Episode 318): 102.92203036966858
-Total Profit: 706.4593190901265
-Final Price (End Of Episode 319): 99.0928976117404
-Total Profit: 824.556495156513
-Final Price (End Of Episode 320): 84.96208363363345
-Total Profit: 620.4404686185869
-Final Price (End Of Episode 321): 80.55768963715684
-Total Profit: 1095.5564051095942
-Final Price (End Of Episode 322): 73.31429593621036
-Total Profit: 814.1310962439579
-Final Price (End Of Episode 323): 63.68359208274252
-Total Profit: 804.6323890166005
-Final Price (End Of Episode 324): 55.74994362944874
-Total Profit: 946.9839907634396
-Final Price (End Of Episode 325): 0.7877939955842415
-Total Profit: 8628.80471787371
-Final Price (End Of Episode 326): 1.0924455105255886
-Total Profit: 9026.825811256156
-Final Price (End Of Episode 327): 0.9213007072275472
-Total Profit: 7808.72503097537
-Final Price (End Of Episode 328): 0.7005553654765044
-Total Profit: 8203.134182759135
-Final Price (End Of Episode 329): 0.5420095575633974
-Total Profit: 6831.882939896301
-Final Price (End Of Episode 330): 0.8015700792891924
-Total Profit: 7002.669646669132
-Final Price (End Of Episode 331): 0.895049782070199
-Total Profit: 7706.094335957076
-Final Price (End Of Episode 332): 0.6361632477586965
-Total Profit: 7535.186231425579
-Final Price (End Of Episode 333): 47.33923409763497
-Total Profit: 2069.0805536271137
-Final Price (End Of Episode 334): 0.6957028104012357
-Total Profit: 6113.732922593372
-Final Price (End Of Episode 335): 0.3521402260641846
-Total Profit: 7096.401339764315
-Final Price (End Of Episode 336): 0.24650153117977736
-Total Profit: 6272.441281869976
-Final Price (End Of Episode 337): 41.79809642744003
-Total Profit: 1145.96852102353
-Final Price (End Of Episode 338): 40.18060655322479
-Total Profit: 678.208621796493
-Final Price (End Of Episode 339): 0.2519862675305491
-Total Profit: 6521.610321023539
-Final Price (End Of Episode 340): 33.93119601356429
-Total Profit: 869.2165117030524
-Final Price (End Of Episode 341): 0.5317783032985266
-Total Profit: 6723.59391564096
-Final Price (End Of Episode 342): 33.80694030598096
-Total Profit: 808.5767183311261
-Final Price (End Of Episode 343): 0.8531043673932333
-Total Profit: 7462.490505987278
-Final Price (End Of Episode 344): 0.4925361422123773
-Total Profit: 6558.28976999298
-Final Price (End Of Episode 345): 0.8231917274305371
-Total Profit: 7159.802461631756
-Final Price (End Of Episode 346): 0.5187715056593079
-Total Profit: 6723.786855184761
-Final Price (End Of Episode 347): 0.9016841051833131
-Total Profit: 7686.81840603288
-Final Price (End Of Episode 348): 0.5638429160771778
-Total Profit: 7033.869637245136
-Final Price (End Of Episode 349): 0.43646818965632805
-Total Profit: 5938.395216650444
-Final Price (End Of Episode 350): 0.43930347617741794
-Total Profit: 6042.1571456227375
-Final Price (End Of Episode 351): 0.41450716114538366
-Total Profit: 5826.161721191023
-Final Price (End Of Episode 352): 0.5711042703679083
-Total Profit: 7018.488221100912
-Final Price (End Of Episode 353): 30.345961703840928
-Total Profit: 1084.1854732587376
-Final Price (End Of Episode 354): 29.085316429852742
-Total Profit: 867.4242960961169
-Final Price (End Of Episode 355): 28.518942989182392
-Total Profit: 671.122089360504
-Final Price (End Of Episode 356): 0.3953014181565133
-Total Profit: 5510.10567070933
-Final Price (End Of Episode 357): 0.503103112912048
-Total Profit: 6527.238240043263
-Final Price (End Of Episode 358): 0.724621423539829
-Total Profit: 6283.916983108916
-Final Price (End Of Episode 359): 0.7267830392034487
-Total Profit: 6485.051961144608
-Final Price (End Of Episode 360): 0.7241564191932381
-Total Profit: 6235.569160039418
-Final Price (End Of Episode 361): 27.082782830649567
-Total Profit: 734.7886069694334
-Final Price (End Of Episode 362): 0.33310286333588124
-Total Profit: 4889.109929320677
-Final Price (End Of Episode 363): 24.86293234103857
-Total Profit: 3673.658529213537
-Final Price (End Of Episode 364): 0.8443279710026412
-Total Profit: 7299.895304226941
-Final Price (End Of Episode 365): 0.8208000693372188
-Total Profit: 7053.659119234972
-Final Price (End Of Episode 366): 0.5422396541003955
-Total Profit: 6653.612145695039
-Final Price (End Of Episode 367): 0.8561738870404154
-Total Profit: 7490.522514855154
-Final Price (End Of Episode 368): 25.10181861670672
-Total Profit: 1020.9256998225904
-Final Price (End Of Episode 369): 24.098973805930807
-Total Profit: 976.8013775258648
-Final Price (End Of Episode 370): 0.7456040686000689
-Total Profit: 6335.298192896938
-Final Price (End Of Episode 371): 0.7460096438101023
-Total Profit: 6588.424291893769
-Final Price (End Of Episode 372): 21.265446015190378
-Total Profit: 735.5468559798791
-Final Price (End Of Episode 373): 20.684171881021605
-Total Profit: 782.4120482780341
-Final Price (End Of Episode 374): 20.408321877275483
-Total Profit: 1167.5114197921728
-Final Price (End Of Episode 375): 0.24759345254511356
-Total Profit: 6314.979126111541
-Final Price (End Of Episode 376): 1.29194198441712
-Total Profit: 10142.499978860467
-Final Price (End Of Episode 377): 0.6268570956289778
-Total Profit: 7696.61694240469
-Final Price (End Of Episode 378): 0.629655621286092
-Total Profit: 5421.63963770176
-Final Price (End Of Episode 379): 0.8644348921240075
-Total Profit: 5280.329636384606
-Final Price (End Of Episode 380): 1.260002918297121
-Total Profit: 10074.055981599275
-Final Price (End Of Episode 381): 0.5272234619337182
-Total Profit: 4430.20223173891
-Final Price (End Of Episode 382): 0.561001466306124
-Total Profit: 7087.45614840853
-Final Price (End Of Episode 383): 0.6402963510157749
-Total Profit: 7511.018479577614
-Final Price (End Of Episode 384): 0.6775075690161456
-Total Profit: 7755.762622485278
-Final Price (End Of Episode 385): 1.2372622042098889
-Total Profit: 9847.780351211026
-Final Price (End Of Episode 386): 0.42224817762532374
-Total Profit: 5542.8893541316465
-Final Price (End Of Episode 387): 21.055083121303092
-Total Profit: 933.1224427518356
-Final Price (End Of Episode 388): 0.5078037551508321
-Total Profit: 4213.806733616472
-Final Price (End Of Episode 389): 0.568739773612565
-Total Profit: 4824.049539324391
-Final Price (End Of Episode 390): 9.99827492636199
-Total Profit: 2542.2064661265085
-Final Price (End Of Episode 391): 11.595459479445168
-Total Profit: 1455.99233008021
-Final Price (End Of Episode 392): 11.113664372072243
-Total Profit: 1876.397118875738
-Final Price (End Of Episode 393): 11.685511231785965
-Total Profit: 1722.172672422963
-Final Price (End Of Episode 394): 11.890683811703884
-Total Profit: 1385.9998424781202
-Final Price (End Of Episode 395): 12.665919009970906
-Total Profit: 1505.5133362675454
-Final Price (End Of Episode 396): 12.258450552562
-Total Profit: 1333.6753085852915
-Final Price (End Of Episode 397): 12.65124596777493
-Total Profit: 1353.886250010227
-Final Price (End Of Episode 398): 12.469968144358425
-Total Profit: 1261.3987549585252
-Final Price (End Of Episode 399): 12.785024121496054
-Total Profit: 1251.7910544955075
-Final Price (End Of Episode 400): 12.197262522514093
-Total Profit: 1410.0088690065738
-Final Price (End Of Episode 401): 12.209386196668312
-Total Profit: 1351.3014096506645
-Final Price (End Of Episode 402): 12.416710696355318
-Total Profit: 1397.597026566501
-Final Price (End Of Episode 403): 13.94267812511698
-Total Profit: 1026.5818656508538
-Final Price (End Of Episode 404): 13.718911983437678
-Total Profit: 898.3212599091071
-Final Price (End Of Episode 405): 13.698568256075545
-Total Profit: 1048.886226005832
-Final Price (End Of Episode 406): 12.468117958269282
-Total Profit: 1373.8195160202074
-Final Price (End Of Episode 407): 12.43138218733343
-Total Profit: 1297.267337142024
-Final Price (End Of Episode 408): 12.390302876878678
-Total Profit: 1391.6854163427886
-Final Price (End Of Episode 409): 10.84933422890202
-Total Profit: 1768.170974742296
-Final Price (End Of Episode 410): 11.763119597215628
-Total Profit: 1553.5503172751128
-Final Price (End Of Episode 411): 10.494838950189473
-Total Profit: 2050.1729883670687
-Final Price (End Of Episode 412): 11.90085193900924
-Total Profit: 1632.3322562136052
-Final Price (End Of Episode 413): 11.301620814617518
-Total Profit: 1610.4337385154518
-Final Price (End Of Episode 414): 11.912945406431783
-Total Profit: 1654.8857631019646
-Final Price (End Of Episode 415): 10.090347803753877
-Total Profit: 2102.124252249002
-Final Price (End Of Episode 416): 0.9074982513532905
-Total Profit: 7941.524910362769
-Final Price (End Of Episode 417): 0.4804517810213955
-Total Profit: 6057.29213687069
-Final Price (End Of Episode 418): 12.933775537995869
-Total Profit: 1240.942252790827
-Final Price (End Of Episode 419): 15.780725156009925
-Total Profit: 1134.7356757032262
-Final Price (End Of Episode 420): 0.8850875573666199
-Total Profit: 7606.058006812262
-Final Price (End Of Episode 421): 0.9340311265427956
-Total Profit: 8070.561506539026
-Final Price (End Of Episode 422): 0.5894791405675497
-Total Profit: 7239.518589025735
-Final Price (End Of Episode 423): 0.7003696532690313
-Total Profit: 6003.407507898247
-Final Price (End Of Episode 424): 0.9726954174158444
-Total Profit: 6417.6122601332545
-Final Price (End Of Episode 425): 0.12521973099928485
-Total Profit: 5401.399901974192
-Final Price (End Of Episode 426): 1.000604581418131
-Total Profit: 10144.237180950966
-Final Price (End Of Episode 427): 0.33916766887736616
-Total Profit: 5062.205685570487
-Final Price (End Of Episode 428): 5.380054913800574
-Total Profit: 8618.321760960747
-Final Price (End Of Episode 429): 6.122686974594414
-Total Profit: 7270.803398889454
-Final Price (End Of Episode 430): 1.155550710507633
-Total Profit: 10947.95835681314
-Final Price (End Of Episode 431): 0.5005367464633435
-Total Profit: 6443.157307723647
-Final Price (End Of Episode 432): 0.5965348677959335
-Total Profit: 5160.680547809592
-Final Price (End Of Episode 433): 1.1508857800508783
-Total Profit: 9436.439036570417
-Final Price (End Of Episode 434): 0.8853121502706047
-Total Profit: 7779.922923565633
-Final Price (End Of Episode 435): 0.6051137468970713
-Total Profit: 5179.512561376664
-Final Price (End Of Episode 436): 0.7567387714766767
-Total Profit: 6590.72340664772
-Final Price (End Of Episode 437): 0.6398532950086246
-Total Profit: 7577.568034298299
-Final Price (End Of Episode 438): 0.6116292962692202
-Total Profit: 5283.362871888999
-Final Price (End Of Episode 439): 0.7365686327034264
-Total Profit: 6674.802997272589
-Final Price (End Of Episode 440): 0.48289322434881154
-Total Profit: 6344.290911029336
-Final Price (End Of Episode 441): 0.33648952453424896
-Total Profit: 5048.156813787
-Final Price (End Of Episode 442): 0.5614519848100064
-Total Profit: 6932.698393629122
-Final Price (End Of Episode 443): 0.5925983820137959
-Total Profit: 7422.282542201735
-Final Price (End Of Episode 444): 0.9507032366776924
-Total Profit: 8045.3458686655595
-Final Price (End Of Episode 445): 0.7603526480706626
-Total Profit: 6711.628799759115
-Final Price (End Of Episode 446): 1.007245100872082
-Total Profit: 6387.794578753369
-Final Price (End Of Episode 447): 0.621138441308168
-Total Profit: 5232.9805209454635
-Final Price (End Of Episode 448): 0.660725050421183
-Total Profit: 7676.983734304365
-Final Price (End Of Episode 449): 0.9982409577878819
-Total Profit: 8509.425193252853
-Final Price (End Of Episode 450): 1.4056926180142493
-Total Profit: 11097.179760587233
-Final Price (End Of Episode 451): 0.7761740341797101
-Total Profit: 8803.703186892819
-Final Price (End Of Episode 452): 0.7716822987598233
-Total Profit: 6905.826100654566
-Final Price (End Of Episode 453): 0.6555236959595168
-Total Profit: 5605.099245721381
-Final Price (End Of Episode 454): 0.8150612773232391
-Total Profit: 8867.004721162528
-Final Price (End Of Episode 455): 0.9622175465604947
-Total Profit: 8135.240784398139
-Final Price (End Of Episode 456): 0.369840929434631
-Total Profit: 5506.880382851503
-Final Price (End Of Episode 457): 0.8299712133582677
-Total Profit: 7380.602633990899
-Final Price (End Of Episode 458): 0.7802897953803742
-Total Profit: 8766.719272298607
-Final Price (End Of Episode 459): 0.7536439852238479
-Total Profit: 8529.314521760403
-Final Price (End Of Episode 460): 0.7218784668268143
-Total Profit: 9856.172502472558
-Final Price (End Of Episode 461): 0.767492791400731
-Total Profit: 8539.615206341872
-Final Price (End Of Episode 462): 1.0230117259920088
-Total Profit: 8606.88734014807
-Final Price (End Of Episode 463): 0.7331686421881671
-Total Profit: 6373.965308167968
-Final Price (End Of Episode 464): 0.6041669575165842
-Total Profit: 9234.356973077514
-Final Price (End Of Episode 465): 0.6914589414797827
-Total Profit: 9883.544145736189
-Final Price (End Of Episode 466): 1.4801406656468254
-Total Profit: 9942.527781257628
-Final Price (End Of Episode 467): 0.8640338292896175
-Total Profit: 9149.738092738347
-Final Price (End Of Episode 468): 0.8365930666942392
-Total Profit: 9001.431609861633
-Final Price (End Of Episode 469): 1.070893918993918
-Total Profit: 8785.219882467356
-Final Price (End Of Episode 470): 0.883889257683856
-Total Profit: 9280.234605812222
-Final Price (End Of Episode 471): 1.2759428868187395
-Total Profit: 10273.813810029113
-Final Price (End Of Episode 472): 0.7628491869454486
-Total Profit: 8532.294658486875
-Final Price (End Of Episode 473): 1.0218754426160452
-Total Profit: 8552.232373671439
-Final Price (End Of Episode 474): 1.3090571642995028
-Total Profit: 10503.000447486662
-Final Price (End Of Episode 475): 1.3069545002567806
-Total Profit: 10341.695414294649
-Final Price (End Of Episode 476): 1.5563089626030284
-Total Profit: 12718.17335163335
-Final Price (End Of Episode 477): 0.889128421365379
-Total Profit: 7870.559620075281
-Final Price (End Of Episode 478): 1.5153960378020472
-Total Profit: 11483.340628660746
-Final Price (End Of Episode 479): 1.1643606992614484
-Total Profit: 11022.778016303402
-Final Price (End Of Episode 480): 1.2541248710727326
-Total Profit: 10223.684822120485
-Final Price (End Of Episode 481): 0.8400718061751469
-Total Profit: 9196.37510271707
-Final Price (End Of Episode 482): 0.8494508402199381
-Total Profit: 9241.776418632046
-Final Price (End Of Episode 483): 1.308699786448664
-Total Profit: 10203.006207294507
-Final Price (End Of Episode 484): 1.08250067795331
-Total Profit: 10543.511029716736
-Final Price (End Of Episode 485): 1.0176560436678699
-Total Profit: 10286.905920434356
-Final Price (End Of Episode 486): 1.213741750532964
-Total Profit: 9996.116819389412
-Final Price (End Of Episode 487): 1.5873657003719677
-Total Profit: 10779.42839031423
-Final Price (End Of Episode 488): 1.5368424393090137
-Total Profit: 11739.515943837141
-Final Price (End Of Episode 489): 1.5577177514117198
-Total Profit: 11436.474536141164
-Final Price (End Of Episode 490): 1.1211334455336788
-Total Profit: 10687.110976143029
-Final Price (End Of Episode 491): 1.0529958756109443
-Total Profit: 8806.124455357727
-Final Price (End Of Episode 492): 0.8460440100343156
-Total Profit: 7319.755948868598
-Final Price (End Of Episode 493): 1.2949072542956381
-Total Profit: 10277.33336580506
-Final Price (End Of Episode 494): 1.007592641747022
-Total Profit: 11356.648001409972
-Final Price (End Of Episode 495): 1.5670492279183557
-Total Profit: 11302.040380295588
-Final Price (End Of Episode 496): 1.795552171803409
-Total Profit: 12792.672431330864
-Final Price (End Of Episode 497): 1.822323970499435
-Total Profit: 12618.458228161797
-Final Price (End Of Episode 498): 1.510919858871997
-Total Profit: 10295.45409527162
-Final Price (End Of Episode 499): 1.1004321739783949
-Total Profit: 10464.61194230046
-Final Price (End Of Episode 500): 1.0701261007646585
-Total Profit: 11852.686208022778
-Final Price (End Of Episode 501): 1.7737107686025322
-Total Profit: 12955.4661864646
-Final Price (End Of Episode 502): 1.7353569740013515
-Total Profit: 13186.962368837652
-Final Price (End Of Episode 503): 1.1018824877594282
-Total Profit: 10572.702943017399
-Final Price (End Of Episode 504): 1.5399685977786062
-Total Profit: 11660.226817982517
-Final Price (End Of Episode 505): 1.1261660233245763
-Total Profit: 10874.674484025969
-Final Price (End Of Episode 506): 1.5461738649781367
-Total Profit: 11684.318300795385
-Final Price (End Of Episode 507): 1.6848804837528464
-Total Profit: 12160.455543250244
-Final Price (End Of Episode 508): 1.2457679570823021
-Total Profit: 10068.487171577532
-Final Price (End Of Episode 509): 1.254649533230598
-Total Profit: 10223.399093529824
-Final Price (End Of Episode 510): 1.2484250979066582
-Total Profit: 11275.847992618492
-Final Price (End Of Episode 511): 1.4304667987283382
-Total Profit: 12253.505645532274
-Final Price (End Of Episode 512): 1.5445901826874158
-Total Profit: 11623.717695526995
-Final Price (End Of Episode 513): 1.7233273010520738
-Total Profit: 12970.507200964463
-Final Price (End Of Episode 514): 1.2626186949288365
-Total Profit: 11298.434693129628
-Final Price (End Of Episode 515): 1.3385963274624713
-Total Profit: 11715.143417710231
-Final Price (End Of Episode 516): 1.3785859157561307
-Total Profit: 11987.894802111476
-Final Price (End Of Episode 517): 1.171201116553534
-Total Profit: 10824.011082889168
-Final Price (End Of Episode 518): 1.0194162634396915
-Total Profit: 10157.088504559264
-Final Price (End Of Episode 519): 1.0418255198547164
-Total Profit: 10488.017142208644
-Final Price (End Of Episode 520): 1.4505841026123958
-Total Profit: 10989.563471175457
-Final Price (End Of Episode 521): 1.4563884961677718
-Total Profit: 11154.456389983563
-Final Price (End Of Episode 522): 1.476569405540388
-Total Profit: 11357.496224715505
-Final Price (End Of Episode 523): 1.5295146938954964
-Total Profit: 12460.217996056372
-Final Price (End Of Episode 524): 1.5978134435574187
-Total Profit: 12312.298779953195
-Final Price (End Of Episode 525): 2.19958640071962
-Total Profit: 13475.938029518571
-Final Price (End Of Episode 526): 1.5224343089727514
-Total Profit: 12346.273182501918
-Final Price (End Of Episode 527): 1.4224566556168834
-Total Profit: 13240.204685008766
-Final Price (End Of Episode 528): 1.783198925954621
-Total Profit: 12274.739928548956
-Final Price (End Of Episode 529): 1.9255697157678107
-Total Profit: 12507.600176887068
-Final Price (End Of Episode 530): 1.4483983409299603
-Total Profit: 11093.854769244715
-Final Price (End Of Episode 531): 1.6064476705303874
-Total Profit: 12794.235267664953
-Final Price (End Of Episode 532): 1.5364370405499796
-Total Profit: 12325.681626747533
-Final Price (End Of Episode 533): 1.5383731435037964
-Total Profit: 12391.63359235996
-Final Price (End Of Episode 534): 1.2716242294359539
-Total Profit: 11660.40830346118
-Final Price (End Of Episode 535): 2.039694335963124
-Total Profit: 12921.239039236956
-Final Price (End Of Episode 536): 2.1459286252685783
-Total Profit: 13472.169188151236
-Final Price (End Of Episode 537): 2.368258837950222
-Total Profit: 13774.01912483295
-Final Price (End Of Episode 538): 1.991369822999438
-Total Profit: 13200.724917897003
-Final Price (End Of Episode 539): 2.2343788865716347
-Total Profit: 13627.447141602208
-Final Price (End Of Episode 540): 2.288288939928788
-Total Profit: 13896.717788442067
-Final Price (End Of Episode 541): 3.2202398720686167
-Total Profit: 13092.822681238225
-Final Price (End Of Episode 542): 2.7674352500104593
-Total Profit: 13854.110425805251
-Final Price (End Of Episode 543): 3.0457287844873857
-Total Profit: 13689.293894324022
-Final Price (End Of Episode 544): 1.9782274698521913
-Total Profit: 13777.06026680603
-Final Price (End Of Episode 545): 2.0016779481928313
-Total Profit: 13122.905042428141
-Final Price (End Of Episode 546): 2.924316152681981
-Total Profit: 13871.044138005522
-Final Price (End Of Episode 547): 2.675091919762795
-Total Profit: 13759.114930160204
-Final Price (End Of Episode 548): 2.037566202549246
-Total Profit: 13255.626646072771
-Final Price (End Of Episode 549): 2.5558431371053327
-Total Profit: 13857.097293243556
-Final Price (End Of Episode 550): 2.4691964273218145
-Total Profit: 13593.187939691894
-Final Price (End Of Episode 551): 2.353311796306483
-Total Profit: 13454.5287729817
-Final Price (End Of Episode 552): 2.508326115693146
-Total Profit: 13664.033144904575
-Final Price (End Of Episode 553): 2.4196604909189015
-Total Profit: 13666.194582871829
-Final Price (End Of Episode 554): 1.8736187195179062
-Total Profit: 13140.113514367556
-Final Price (End Of Episode 555): 1.4172362465152504
-Total Profit: 12187.327713243043
-Final Price (End Of Episode 556): 2.147006392664979
-Total Profit: 13514.643470121851
-Final Price (End Of Episode 557): 2.0389207741107485
-Total Profit: 13663.675331085451
-Final Price (End Of Episode 558): 3.090874078597259
-Total Profit: 13128.718685392634
-Final Price (End Of Episode 559): 2.9089000250529677
-Total Profit: 13901.597727369288
-Final Price (End Of Episode 560): 3.166425030239502
-Total Profit: 13953.203441399926
-Final Price (End Of Episode 561): 2.8780994467815075
-Total Profit: 13731.222339151682
-Final Price (End Of Episode 562): 2.1516694805512544
-Total Profit: 13888.985754092822
-Final Price (End Of Episode 563): 3.22901921655059
-Total Profit: 13545.666858808661
-Final Price (End Of Episode 564): 2.369351749689727
-Total Profit: 13998.201827739498
-Final Price (End Of Episode 565): 2.2303237310747055
-Total Profit: 13918.142638852672
-Final Price (End Of Episode 566): 2.718366346650641
-Total Profit: 13790.440548820612
-Final Price (End Of Episode 567): 3.023449915657451
-Total Profit: 13792.920087564944
-Final Price (End Of Episode 568): 2.7989216770049277
-Total Profit: 13532.160712605453
-Final Price (End Of Episode 569): 2.9660778219198294
-Total Profit: 13482.746128529474
-Final Price (End Of Episode 570): 2.2619225860165573
-Total Profit: 13785.154312436049
-Final Price (End Of Episode 571): 3.3563595515998386
-Total Profit: 13318.915150534114
-Final Price (End Of Episode 572): 2.754807155108984
-Total Profit: 13802.795166380502
-Final Price (End Of Episode 573): 2.232361573158253
-Total Profit: 14032.989992656878
-Final Price (End Of Episode 574): 2.0481453304145965
-Total Profit: 12903.210274617939
-Final Price (End Of Episode 575): 2.9554957696304465
-Total Profit: 13348.39852679258
-Final Price (End Of Episode 576): 2.751163355659516
-Total Profit: 13736.215566355226
-Final Price (End Of Episode 577): 3.034513283960404
-Total Profit: 13072.943844682019
-Final Price (End Of Episode 578): 2.914154080646674
-Total Profit: 13590.179541377945
-Final Price (End Of Episode 579): 2.1634374049817993
-Total Profit: 13441.645611857757
-Final Price (End Of Episode 580): 1.73163135267313
-Total Profit: 12911.13770992121
-Final Price (End Of Episode 581): 2.7050418984229374
-Total Profit: 13564.870846951868
-Final Price (End Of Episode 582): 2.9889403547563753
-Total Profit: 13620.3854159104
-Final Price (End Of Episode 583): 2.3430044713660427
-Total Profit: 13753.121138019922
-Final Price (End Of Episode 584): 2.4269334890297674
-Total Profit: 13997.017755664707
-Final Price (End Of Episode 585): 2.0956593469617086
-Total Profit: 13450.38377548966
-Final Price (End Of Episode 586): 1.2763358246302676
-Total Profit: 11532.428568147443
-Final Price (End Of Episode 587): 1.5302295836155362
-Total Profit: 11406.527993975102
-Final Price (End Of Episode 588): 1.6426897813218608
-Total Profit: 12643.660005795293
-Final Price (End Of Episode 589): 1.566370789375831
-Total Profit: 11882.357731303047
-Final Price (End Of Episode 590): 2.126230400484054
-Total Profit: 13839.704767831154
-Final Price (End Of Episode 591): 2.186244653118351
-Total Profit: 13324.858808128438
-Final Price (End Of Episode 592): 2.587623861707426
-Total Profit: 14034.301067296577
-Final Price (End Of Episode 593): 2.0066147438978463
-Total Profit: 13406.329106470443
-Final Price (End Of Episode 594): 1.1579419994266356
-Total Profit: 11961.153329426288
-Final Price (End Of Episode 595): 2.0235033124356825
-Total Profit: 13305.367087854494
-Final Price (End Of Episode 596): 1.7834258468992106
-Total Profit: 13546.201907484487
-Final Price (End Of Episode 597): 2.762670415434454
-Total Profit: 13548.678619515607
-Final Price (End Of Episode 598): 2.8026947435725074
-Total Profit: 13754.286558251562
-Final Price (End Of Episode 599): 2.4746839096435638
-Total Profit: 13893.017795984886
-Final Price (End Of Episode 600): 3.361135325551105
-Total Profit: 12995.899168580556
-Final Price (End Of Episode 601): 2.3533951093229892
-Total Profit: 13852.2934796427
-Final Price (End Of Episode 602): 2.820613908666716
-Total Profit: 13543.088833488246
-Final Price (End Of Episode 603): 1.9510099364768676
-Total Profit: 13514.087799349802
-Final Price (End Of Episode 604): 2.783444443051563
-Total Profit: 13580.560104507469
-Final Price (End Of Episode 605): 1.6605543942050405
-Total Profit: 12318.1466704928
-Final Price (End Of Episode 606): 2.665022519559055
-Total Profit: 13712.518024351057
-Final Price (End Of Episode 607): 3.975219687850717
-Total Profit: 11966.262578557848
-Final Price (End Of Episode 608): 3.042575049757427
-Total Profit: 13435.557390399896
-Final Price (End Of Episode 609): 3.403409485355996
-Total Profit: 13088.85957532769
-Final Price (End Of Episode 610): 3.2155405993110375
-Total Profit: 12939.09957486294
-Final Price (End Of Episode 611): 2.2873489176706703
-Total Profit: 13786.011675736927
-Final Price (End Of Episode 612): 3.606261525423272
-Total Profit: 12611.071416100047
-Final Price (End Of Episode 613): 5.225523975796035
-Total Profit: 8946.245554012448
-Final Price (End Of Episode 614): 4.24609399002164
-Total Profit: 11513.703834503964
-Final Price (End Of Episode 615): 3.8835223730463273
-Total Profit: 11827.177894402603
-Final Price (End Of Episode 616): 3.640472753351912
-Total Profit: 13283.619811686407
-Final Price (End Of Episode 617): 2.924192226895233
-Total Profit: 13609.60964182875
-Final Price (End Of Episode 618): 3.139780621612644
-Total Profit: 13683.4242415219
-Final Price (End Of Episode 619): 2.4399776596355074
-Total Profit: 13959.955854594516
-Final Price (End Of Episode 620): 1.6041055943231513
-Total Profit: 13431.514070114017
-Final Price (End Of Episode 621): 2.696601334780679
-Total Profit: 13847.669038515614
-Final Price (End Of Episode 622): 2.442473010354188
-Total Profit: 13978.759543434098
-Final Price (End Of Episode 623): 4.082143744107643
-Total Profit: 11946.806325454241
-Final Price (End Of Episode 624): 2.008722005208686
-Total Profit: 12936.609306643106
-Final Price (End Of Episode 625): 2.3641466147532846
-Total Profit: 13925.585872167057
-Final Price (End Of Episode 626): 2.734439966511201
-Total Profit: 13959.625278497884
-Final Price (End Of Episode 627): 2.5905736548036113
-Total Profit: 13509.75180121333
-Final Price (End Of Episode 628): 2.4306409766530095
-Total Profit: 13875.59059856002
-Final Price (End Of Episode 629): 1.855866617413533
-Total Profit: 13019.79740299253
-Final Price (End Of Episode 630): 2.0068517954944856
-Total Profit: 13209.826075764822
-Final Price (End Of Episode 631): 1.9153439991313586
-Total Profit: 13082.729449638025
-Final Price (End Of Episode 632): 2.095739624767317
-Total Profit: 13487.947330180259
-Final Price (End Of Episode 633): 2.268555349569359
-Total Profit: 13473.986676332699
-Final Price (End Of Episode 634): 2.247862231992539
-Total Profit: 13534.954983047852
-Final Price (End Of Episode 635): 2.2942882573689567
-Total Profit: 13336.552836223833
-Final Price (End Of Episode 636): 0.35316383882852964
-Total Profit: 5100.070758923185
-Final Price (End Of Episode 637): 2.1842904796970486
-Total Profit: 12903.947363486355
-Final Price (End Of Episode 638): 1.7569023227289131
-Total Profit: 13156.458175116175
-Final Price (End Of Episode 639): 1.7915346739248297
-Total Profit: 13299.951974756354
-Final Price (End Of Episode 640): 1.4470517227090043
-Total Profit: 11924.013971957378
-Final Price (End Of Episode 641): 2.169674870195753
-Total Profit: 13261.914626469617
-Final Price (End Of Episode 642): 1.9415925604846493
-Total Profit: 13621.794043654365
-Final Price (End Of Episode 643): 2.081687667741167
-Total Profit: 13409.432162110817
-Final Price (End Of Episode 644): 2.129951044295778
-Total Profit: 13615.011226526774
-Final Price (End Of Episode 645): 1.5616131476888446
-Total Profit: 13016.879411862477
-Final Price (End Of Episode 646): 1.9061637868701782
-Total Profit: 13563.389139128209
-Final Price (End Of Episode 647): 2.0704538994201593
-Total Profit: 13886.484459751331
-Final Price (End Of Episode 648): 2.1860242731404598
-Total Profit: 13279.7207948849
-Final Price (End Of Episode 649): 1.9421088528350312
-Total Profit: 13268.734074597822
-Final Price (End Of Episode 650): 2.2761835620503845
-Total Profit: 14096.734802433552
-Final Price (End Of Episode 651): 2.1615891772570723
-Total Profit: 13447.580760947125
-Final Price (End Of Episode 652): 2.738138209712335
-Total Profit: 13760.002934186186
-Final Price (End Of Episode 653): 2.2464854165493193
-Total Profit: 14063.212168039237
-Final Price (End Of Episode 654): 2.7437042827157105
-Total Profit: 13818.456418309313
-Final Price (End Of Episode 655): 2.2982458536831625
-Total Profit: 13690.28223430383
-Final Price (End Of Episode 656): 2.240753481996395
-Total Profit: 13604.26917190886
-Final Price (End Of Episode 657): 2.8880919443195006
-Total Profit: 13933.178179630666
-Final Price (End Of Episode 658): 3.0350722748332832
-Total Profit: 13908.666553029569
-Final Price (End Of Episode 659): 2.3309697252176313
-Total Profit: 13828.841251159634
-Final Price (End Of Episode 660): 2.569053199226863
-Total Profit: 13999.5897366841
-Final Price (End Of Episode 661): 2.8297527805557126
-Total Profit: 13599.374693456439
-Final Price (End Of Episode 662): 2.523059301624073
-Total Profit: 14173.646482231614
-Final Price (End Of Episode 663): 2.5561157634931315
-Total Profit: 13827.06820658397
-Final Price (End Of Episode 664): 2.873887578798594
-Total Profit: 14004.480394108808
-Final Price (End Of Episode 665): 1.9204913071153125
-Total Profit: 13492.822944410416
-Final Price (End Of Episode 666): 2.086100950132929
-Total Profit: 13794.908004840103
-Final Price (End Of Episode 667): 2.071777964862407
-Total Profit: 13102.124827169793
-Final Price (End Of Episode 668): 2.2970782253956163
-Total Profit: 13734.12675165968
-Final Price (End Of Episode 669): 1.439573631710751
-Total Profit: 12291.070099951934
-Final Price (End Of Episode 670): 2.2490914390252166
-Total Profit: 13690.401593005321
-Final Price (End Of Episode 671): 2.2934387699347987
-Total Profit: 13023.684982071672
-Final Price (End Of Episode 672): 2.026971862171468
-Total Profit: 13211.527448087803
-Final Price (End Of Episode 673): 2.2921972636714525
-Total Profit: 13716.56897307569
-Final Price (End Of Episode 674): 1.8294040051476306
-Total Profit: 13625.542672079735
-Final Price (End Of Episode 675): 2.106656263727505
-Total Profit: 13335.519405654848
-Final Price (End Of Episode 676): 1.9699025033463324
-Total Profit: 13680.206034602526
-Final Price (End Of Episode 677): 2.090093365992834
-Total Profit: 13113.243291690613
-Final Price (End Of Episode 678): 1.9125877879436324
-Total Profit: 13461.187828070566
-Final Price (End Of Episode 679): 1.9864693878611805
-Total Profit: 13786.076184374555
-Final Price (End Of Episode 680): 2.1850357403832956
-Total Profit: 13460.186601337396
-Final Price (End Of Episode 681): 1.7270895054042086
-Total Profit: 12996.314593315848
-Final Price (End Of Episode 682): 2.373601632881945
-Total Profit: 13978.611433271139
-Final Price (End Of Episode 683): 2.500231626722668
-Total Profit: 13559.846214512163
-Final Price (End Of Episode 684): 2.2871206902823795
-Total Profit: 13856.118451593771
-Final Price (End Of Episode 685): 2.920595457436112
-Total Profit: 13791.977870409371
-Final Price (End Of Episode 686): 2.2083167961087455
-Total Profit: 13469.110978692184
-Final Price (End Of Episode 687): 2.1011744497404115
-Total Profit: 13294.926189525977
-Final Price (End Of Episode 688): 1.7363997076919642
-Total Profit: 13075.388718182154
-Final Price (End Of Episode 689): 1.9689369585663794
-Total Profit: 13162.872677713784
-Final Price (End Of Episode 690): 2.2885395781184252
-Total Profit: 14069.973253480626
-Final Price (End Of Episode 691): 2.412042732543513
-Total Profit: 13996.777259511127
-Final Price (End Of Episode 692): 2.842052913820182
-Total Profit: 13792.63541643414
-Final Price (End Of Episode 693): 2.8211457677637974
-Total Profit: 13338.518552087795
-Final Price (End Of Episode 694): 2.9633595808550903
-Total Profit: 13895.114702179748
-Final Price (End Of Episode 695): 2.088652544333267
-Total Profit: 13506.085495336596
-Final Price (End Of Episode 696): 2.198940745576567
-Total Profit: 13540.090021399561
-Final Price (End Of Episode 697): 3.028592507803447
-Total Profit: 13481.16485473023
-Final Price (End Of Episode 698): 2.5397935177885045
-Total Profit: 13923.542340563687
-Final Price (End Of Episode 699): 2.8614800456427325
-Total Profit: 13333.614180317485
-Final Price (End Of Episode 700): 3.541976158371238
-Total Profit: 12867.58108917272
-Final Price (End Of Episode 701): 3.3792855042398235
-Total Profit: 13124.044133980795
-Final Price (End Of Episode 702): 3.347742393186188
-Total Profit: 13437.782927623248
-Final Price (End Of Episode 703): 3.132490850902612
-Total Profit: 14012.218721568994
-Final Price (End Of Episode 704): 2.428458154437801
-Total Profit: 14010.436413778301
-Final Price (End Of Episode 705): 2.61128726502138
-Total Profit: 13484.14574263373
-Final Price (End Of Episode 706): 2.8795085811479777
-Total Profit: 13835.511798179268
-Final Price (End Of Episode 707): 2.886326435195759
-Total Profit: 13492.882994404441
-Final Price (End Of Episode 708): 2.6935634359067064
-Total Profit: 13490.464099888603
-Final Price (End Of Episode 709): 2.603708093111168
-Total Profit: 13403.911274866961
-Final Price (End Of Episode 710): 2.7804935462823783
-Total Profit: 14095.144170264679
-Final Price (End Of Episode 711): 2.918665778381998
-Total Profit: 13711.220939877343
-Final Price (End Of Episode 712): 3.13604177303521
-Total Profit: 13289.125268516833
-Final Price (End Of Episode 713): 3.1944393008826104
-Total Profit: 12988.840243680741
-Final Price (End Of Episode 714): 2.3591187477619533
-Total Profit: 13864.643874837095
-Final Price (End Of Episode 715): 2.481328793896113
-Total Profit: 13831.485131071098
-Final Price (End Of Episode 716): 2.45506070532272
-Total Profit: 13703.499049820372
-Final Price (End Of Episode 717): 2.429657997195108
-Total Profit: 13470.58378694055
-Final Price (End Of Episode 718): 3.3075232681421984
-Total Profit: 13703.715616747937
-Final Price (End Of Episode 719): 2.7598874980460835
-Total Profit: 13638.8950405352
-Final Price (End Of Episode 720): 3.036522149556837
-Total Profit: 13331.421774683764
-Final Price (End Of Episode 721): 2.8750320014201627
-Total Profit: 13596.772814559747
-Final Price (End Of Episode 722): 2.711079546170073
-Total Profit: 13982.74886756604
-Final Price (End Of Episode 723): 2.569207126954228
-Total Profit: 13798.028472191922
-Final Price (End Of Episode 724): 1.8008337973340311
-Total Profit: 12926.5048135194
-Final Price (End Of Episode 725): 1.7597308903772637
-Total Profit: 13388.816856747993
-Final Price (End Of Episode 726): 2.4988121916367088
-Total Profit: 14049.93491585508
-Final Price (End Of Episode 727): 3.227170376295759
-Total Profit: 13765.56973256031
-Final Price (End Of Episode 728): 2.2718836517652927
-Total Profit: 14065.848309744697
-Final Price (End Of Episode 729): 2.6069260164611032
-Total Profit: 13882.84471996836
-Final Price (End Of Episode 730): 1.9591113035088434
-Total Profit: 13289.331013740823
-Final Price (End Of Episode 731): 2.250230926178129
-Total Profit: 13636.004714976636
-Final Price (End Of Episode 732): 2.023345268473522
-Total Profit: 13193.780654248161
-Final Price (End Of Episode 733): 2.5096714544961234
-Total Profit: 13530.036407350566
-Final Price (End Of Episode 734): 1.999952390511758
-Total Profit: 13982.680492724441
-Final Price (End Of Episode 735): 2.750457379931831
-Total Profit: 13879.473053291373
-Final Price (End Of Episode 736): 3.1077630717788334
+.
+.
+.
+.
+.
+
 Total Profit: 14021.346782063994
 Final Price (End Of Episode 737): 1.9247076881267873
 Total Profit: 13216.955972552349
@@ -14991,7 +13531,7 @@ Total Profit: 13684.368206168581
         <span class="n">showgrid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">zeroline</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">showline</span><span class="o">=</span><span class="kc">False</span>
-    
+
     <span class="p">)</span>
 <span class="p">)</span>
 
@@ -15035,7 +13575,7 @@ Total Profit: 13684.368206168581
   </div>
 </body>
 
- 
+
 
 
 </html>
