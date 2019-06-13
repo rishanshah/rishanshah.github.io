@@ -245,6 +245,7 @@ footer hr {
   margin: 0 auto;
 }
 
+
 @media screen and (min-width: 40em) {
   .education {
     width: 70%;
@@ -262,7 +263,7 @@ footer hr {
   height: 4em;
   width:4em;
   border-radius: 2em;
-  
+
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -281,7 +282,7 @@ footer hr {
   background-color: #f3e2d8;
   padding: 3em 1em;
   margin-top: 3em;
-  margin-bottom: 3em;
+  /* margin-bottom: 3em; */
   text-align: center;
 }
 
@@ -363,3 +364,47 @@ footer hr {
  }
 
 }
+
+/*Somethinginteresting*/
+
+.somethinginteresting {
+  background-color:#cdecf2;
+  padding: 3em 1em;
+  margin-bottom: 3em;
+}
+
+
+
+.somethinginteresting .accordion-header{
+  font-size: 1.1em;
+  color:#3d7ce2;
+  text-align: left;
+}
+
+.somethinginteresting .accordion-header:hover{
+  cursor: pointer;
+}
+.somethinginteresting .accordion-body{
+  padding-bottom: 1em;
+}
+
+.somethinginteresting a {
+  background-color: transparent;
+  border: 3px solid #3d7ce2;
+  padding: 7px 35px;
+  border-radius: 3px;
+  color: #3d7ce2;
+  font-size: 1.1em;
+  opacity: .8;
+  margin-bottom: 10px;
+}
+
+.somethinginteresting a:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 40em) {
+  .somethinginteresting {
+    padding: 6em;
+  }
