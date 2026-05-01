@@ -1,59 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="image_src" href="img/background.jpg" />
-	<meta property="og:image" content="img/background.jpg" />
-	<meta charset="utf-8" />
-	<title>Rishan Shah</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<!--Custom fonts. To improve load times, remove this and update the h1 styling in style.css-->
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
-	<!-- stylesheets -->
-	<!-- favicon -->
-	<link rel="shortcut icon" href="img/favicon.png">
+  <link rel="image_src" href="../img/background.jpg" />
+  <meta property="og:image" content="../img/background.jpg" />
+  <meta charset="utf-8" />
+  <title>Contact — Rishan Shah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="../img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/css/all.min.css"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5704VY0SBK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5704VY0SBK');
+  </script>
 
-	<link rel="stylesheet" href="../dist/spectre.min.css">
-	<link rel="stylesheet" href="../dist/spectre-exp.min.css">
-	<link rel="stylesheet" href="../dist/spectre-icons.min.css">
-	<link rel="stylesheet" href="../dist/style.css" type="text/css" />
-	<link rel="stylesheet" href="../dist/css/all.min.css"/>
-	<script src="javascript/toast.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141599020-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'UA-141599020-1');
-	</script>
+    :root {
+      --bg:        #f8f5f0;
+      --surface:   #ffffff;
+      --surface2:  #f2ede5;
+      --surface3:  #ede7dc;
+      --ink:       #1a1714;
+      --ink2:      #3d3830;
+      --muted:     #9a9087;
+      --accent:    #bf5533;
+      --accent2:   #e07a52;
+      --accent-bg: #fdf1eb;
+      --accent-bd: #f0c4b0;
+      --teal:      #2a7c74;
+      --teal-bg:   #ebf5f4;
+      --border:    #ddd6cc;
+      --font-d:    'Playfair Display', Georgia, serif;
+      --font-b:    'Instrument Sans', sans-serif;
+      --r:         14px;
+      --sh:        0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+      --sh-lg:     0 8px 40px rgba(0,0,0,.10);
+    }
 
+    html { scroll-behavior: smooth; }
 
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-b);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-	<!-- just in case viewer is using Internet Explorer -->
-	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 3.5rem;
+      background: rgba(248,245,240,.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: var(--font-d);
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: .82rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-pill {
+      background: var(--accent) !important;
+      color: #fff !important;
+      padding: .45rem 1.1rem;
+      border-radius: 999px;
+    }
+    .nav-pill:hover { background: var(--accent2) !important; }
 
+    /* ─── CONTACT HERO ─── */
+    .contact-hero {
+      min-height: 60vh;
+      padding: 9rem 3.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .contact-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .contact-eyebrow span {
+      display: inline-block; width: 24px; height: 1px;
+      background: var(--accent);
+    }
+    h1.contact-title {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .contact-subtitle {
+      font-size: 1.15rem; font-weight: 300;
+      color: var(--muted); max-width: 560px;
+      line-height: 1.85; margin-bottom: 3rem;
+    }
+
+    /* ─── FORM CONTAINER ─── */
+    .form-container {
+      max-width: 680px;
+      margin: 0 auto 5rem;
+      padding: 0 3.5rem;
+    }
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 3rem;
+      box-shadow: var(--sh-lg);
+    }
+    .form-card iframe {
+      width: 100%;
+      min-height: 800px;
+      border: none;
+    }
+
+    /* ─── CONTACT INFO ─── */
+    .contact-info {
+      background: var(--surface2);
+      padding: 4rem 3.5rem;
+      text-align: center;
+    }
+    .contact-info h3 {
+      font-family: var(--font-d);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--surface);
+      color: var(--ink2);
+      padding: .9rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: .9rem;
+      transition: all .2s;
+    }
+    .social-link:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--sh);
+    }
+    .social-link i {
+      font-size: 1.1rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--surface3);
+      border-top: 1px solid var(--border);
+      padding: 2.25rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy { font-size: .83rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a {
+      font-size: .83rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: .9rem 1.5rem; }
+      .nav-links { display: none; }
+      .contact-hero { padding: 7rem 1.5rem 3rem; }
+      .form-container { padding: 0 1.5rem; }
+      .form-card { padding: 2rem 1.5rem; }
+      .contact-info { padding: 3rem 1.5rem; }
+      .social-links { flex-direction: column; align-items: stretch; }
+      .social-link { justify-content: center; }
+      footer {
+        padding: 2rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-	<!-- Header-->
-	<header>
-		<h1>Rishan Shah</h1>
-		<p>Data Scientist and Tech Enthusiast</p>
-		<section style = "margin-bottom:2em" class="navbar-section">
-		<a href="../index.html" style = "color:#3d7ce2" class="btn btn-link">Home</a>
-		</section>
-	</header>
+<!-- NAV -->
+<nav>
+  <a href="../index1.html" class="nav-brand">Rishan Shah</a>
+  <ul class="nav-links">
+    <li><a href="../index1.html#about">About</a></li>
+    <li><a href="../index1.html#experience">Experience</a></li>
+    <li><a href="../index1.html#projects">Projects</a></li>
+    <li><a href="../index1.html#articles">Writing</a></li>
+    <li><a href="index.html" class="nav-pill">Contact</a></li>
+  </ul>
+</nav>
 
-	<div class="container">
-		
+<!-- CONTACT HERO -->
+<div class="contact-hero">
+  <div class="contact-eyebrow"><span></span>Get in Touch<span></span></div>
+  <h1 class="contact-title">Let's Connect</h1>
+  <p class="contact-subtitle">
+    Whether you have a question, a project idea, or just want to say hello,
+    I'd love to hear from you. Fill out the form below or reach out on social media.
+  </p>
+</div>
 
-	<!-- Spotlight -->
+<!-- FORM -->
+<div class="form-container">
+  <div class="form-card">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9EZXGjE8jUWlWGVEyHL7fRhFTFKntt7wBtQyFtlJ5iPb_CQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+  </div>
+</div>
 
-		<div class="">
-			<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9EZXGjE8jUWlWGVEyHL7fRhFTFKntt7wBtQyFtlJ5iPb_CQ/viewform?embedded=true" width="340" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-		</div>
+<!-- CONTACT INFO -->
+<section class="contact-info">
+  <h3>Or connect with me directly</h3>
+  <div class="social-links">
+    <a href="https://uk.linkedin.com/in/rishan-shah-5ab726104" target="_blank" class="social-link">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© Rishan Shah 2026</div>
+  <div class="footer-links">
+    <a href="../index1.html">Back to Home</a>
+    <a href="https://uk.linkedin.com/in/rishan-shah-5ab726104" target="_blank">LinkedIn</a>
+  </div>
+</footer>
 
 </body>
 </html>

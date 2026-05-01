@@ -1,392 +1,905 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="image_src" href="img/background.jpg" />
-	<meta property="og:image" content="img/background.jpg" />
-	<meta charset="utf-8" />
-	<title>Rishan Shah</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<!--Custom fonts. To improve load times, remove this and update the h1 styling in style.css-->
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
-	<!-- stylesheets -->
-	<!-- favicon -->
-	<link rel="shortcut icon" href="img/favicon.png">
+  <link rel="image_src" href="img/background.jpg" />
+  <meta property="og:image" content="img/background.jpg" />
+  <meta charset="utf-8" />
+  <title>Rishan Shah — Data Scientist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/css/all.min.css"/>
+  <script src="javascript/toast.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5704VY0SBK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5704VY0SBK');
+  </script>
 
-	<link rel="stylesheet" href="dist/spectre.min.css">
-	<link rel="stylesheet" href="dist/spectre-exp.min.css">
-	<link rel="stylesheet" href="dist/spectre-icons.min.css">
-	<link rel="stylesheet" href="dist/style.css" type="text/css" />
-	<link rel="stylesheet" href="dist/css/all.min.css"/>
-	<script src="javascript/toast.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5704VY0SBK"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+    :root {
+      --bg:        #f8f5f0;
+      --surface:   #ffffff;
+      --surface2:  #f2ede5;
+      --surface3:  #ede7dc;
+      --ink:       #1a1714;
+      --ink2:      #3d3830;
+      --muted:     #9a9087;
+      --accent:    #bf5533;
+      --accent2:   #e07a52;
+      --accent-bg: #fdf1eb;
+      --accent-bd: #f0c4b0;
+      --teal:      #2a7c74;
+      --teal-bg:   #ebf5f4;
+      --border:    #ddd6cc;
+      --font-d:    'Playfair Display', Georgia, serif;
+      --font-b:    'Instrument Sans', sans-serif;
+      --r:         14px;
+      --sh:        0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+      --sh-lg:     0 8px 40px rgba(0,0,0,.10);
+    }
 
-	gtag('config', 'G-5704VY0SBK');
-	</script>
+    html { scroll-behavior: smooth; }
 
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-b);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 3.5rem;
+      background: rgba(248,245,240,.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: var(--font-d);
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: .82rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-pill {
+      background: var(--accent) !important;
+      color: #fff !important;
+      padding: .45rem 1.1rem;
+      border-radius: 999px;
+    }
+    .nav-pill:hover { background: var(--accent2) !important; }
 
-	<!-- just in case viewer is using Internet Explorer -->
-	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    /* ─── COVER IMAGE ─── */
+    .cover-img {
+      width: 100%;
+      height: 650px;
+      margin-top: 60px;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .cover-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 38%;
+      display: block;
+    }
+    .cover-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
 
+    /* Larger screens */
+    @media (min-width: 1440px) {
+      .cover-img {
+        height: 750px;
+      }
+    }
+
+    @media (min-width: 1920px) {
+      .cover-img {
+        height: 850px;
+      }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: calc(100vh - 650px);
+      padding: 4rem 3.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 1440px) {
+      .hero {
+        min-height: calc(100vh - 750px);
+      }
+    }
+
+    @media (min-width: 1920px) {
+      .hero {
+        min-height: calc(100vh - 850px);
+      }
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow span {
+      display: inline-block; width: 24px; height: 1px;
+      background: var(--accent);
+    }
+    h1.hero-name {
+      font-family: var(--font-d);
+      font-size: clamp(4rem, 8vw, 7.5rem);
+      font-weight: 900; line-height: .9;
+      letter-spacing: -.04em;
+      color: var(--ink);
+      margin-bottom: 1.75rem;
+    }
+    h1.hero-name em {
+      font-style: italic; color: var(--accent);
+    }
+    .hero-bio {
+      font-size: 1.1rem; font-weight: 300;
+      color: var(--muted); max-width: 480px;
+      line-height: 1.85; margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-solid {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: var(--ink); color: #fff;
+      padding: .85rem 1.8rem; border-radius: 999px;
+      text-decoration: none; font-weight: 600; font-size: .9rem;
+      transition: background .2s, transform .15s;
+    }
+    .btn-solid:hover { background: var(--accent); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: transparent; color: var(--ink);
+      padding: .85rem 1.8rem; border-radius: 999px;
+      border: 1.5px solid var(--border);
+      text-decoration: none; font-weight: 500; font-size: .9rem;
+      transition: border-color .2s, transform .15s;
+    }
+    .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+    /* hero right card stack */
+    .hero-cards { display: flex; flex-direction: column; gap: 1rem; }
+
+    .hcard {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem 1.75rem;
+      box-shadow: var(--sh);
+    }
+    .hcard-label {
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: .6rem;
+    }
+    .hcard-nums {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+    }
+    .hcard-stat-n {
+      font-family: var(--font-d);
+      font-size: 2rem; font-weight: 900; line-height: 1;
+      color: var(--ink);
+    }
+    .hcard-stat-l {
+      font-size: .75rem; color: var(--muted); margin-top: .2rem;
+    }
+    .hcard-quote {
+      font-family: var(--font-d);
+      font-style: italic; font-size: 1rem;
+      color: var(--ink2); line-height: 1.65;
+    }
+    .hcard-quote::before { content: '"'; color: var(--accent); }
+    .hcard-quote::after  { content: '"'; color: var(--accent); }
+    .hcard-pills { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .hpill {
+      font-size: .75rem; font-weight: 600;
+      padding: .25rem .7rem; border-radius: 999px;
+      background: var(--accent-bg); color: var(--accent);
+      border: 1px solid var(--accent-bd);
+    }
+
+    /* ─── SHARED SECTION CHROME ─── */
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 5.5rem 3.5rem; }
+
+    .sec-head {
+      display: flex; align-items: baseline;
+      gap: 1.25rem; margin-bottom: 3.5rem;
+    }
+    .sec-num {
+      font-family: var(--font-d); font-style: italic;
+      font-size: .85rem; color: var(--accent); flex-shrink: 0;
+    }
+    h2.sec-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 900; letter-spacing: -.03em; color: var(--ink);
+    }
+    .sec-rule { flex: 1; height: 1px; background: var(--border); }
+
+    /* alternating section bg */
+    .bg-white  { background: var(--surface); }
+    .bg-warm   { background: var(--surface2); }
+    .bg-warmer { background: var(--surface3); }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+    .about-text p {
+      color: var(--muted); font-weight: 300;
+      font-size: 1.05rem; margin-bottom: 1.1rem;
+    }
+    .about-text p:first-child { color: var(--ink2); font-size: 1.15rem; font-weight: 400; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.75rem; }
+    .pill {
+      font-size: .78rem; font-weight: 600;
+      padding: .3rem .85rem; border-radius: 999px;
+      background: var(--teal-bg); color: var(--teal);
+      border: 1px solid rgba(42,124,116,.18);
+    }
+    .wisdom-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 2rem; box-shadow: var(--sh);
+    }
+    .wisdom-box-title {
+      font-family: var(--font-d); font-weight: 700;
+      font-size: 1.05rem; color: var(--ink); margin-bottom: 1rem;
+    }
+    .wisdom-list { list-style: none; display: flex; flex-direction: column; gap: .9rem; }
+    .wisdom-list li {
+      padding-left: 1.2rem; position: relative;
+      font-size: .9rem; color: var(--muted);
+      font-style: italic; line-height: 1.6;
+    }
+    .wisdom-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+    /* ─── TESTIMONIALS ─── */
+    .t-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .tcard {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 2rem; box-shadow: var(--sh);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .tcard:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
+    .tcard-mark {
+      font-family: var(--font-d); font-style: italic;
+      font-size: 3.5rem; color: var(--accent);
+      opacity: .22; line-height: 1; margin-bottom: .2rem;
+    }
+    .tcard-quote {
+      font-size: .92rem; color: var(--ink2);
+      line-height: 1.75; font-weight: 300; margin-bottom: 1.5rem;
+    }
+    .tcard-foot {
+      display: flex; align-items: center; gap: .85rem;
+      border-top: 1px solid var(--border); padding-top: 1.25rem;
+    }
+    .tcard-foot img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+    .tcard-name { font-weight: 600; font-size: .87rem; color: var(--ink); }
+    .tcard-role { font-size: .77rem; color: var(--muted); }
+    .tcard-role a { color: var(--accent); text-decoration: none; }
+
+    /* ─── SPOTLIGHT ─── */
+    .spotlight {
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-bd);
+      border-radius: 20px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden; box-shadow: var(--sh);
+    }
+    .spotlight-img { position: relative; overflow: hidden; }
+    .spotlight-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .spotlight-body { padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; }
+    .spotlight-tag {
+      font-size: .7rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
+    .spotlight-body h3 {
+      font-family: var(--font-d);
+      font-size: 1.7rem; font-weight: 700;
+      letter-spacing: -.02em; line-height: 1.2;
+      color: var(--ink); margin-bottom: 1.1rem;
+    }
+    .spotlight-body p {
+      font-size: .95rem; color: var(--muted);
+      line-height: 1.75; font-weight: 300; margin-bottom: 2rem;
+    }
+    .btn-accent {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: var(--accent); color: #fff;
+      padding: .8rem 1.6rem; border-radius: 999px;
+      text-decoration: none; font-weight: 600; font-size: .88rem;
+      width: fit-content; transition: background .2s, transform .15s;
+    }
+    .btn-accent:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    /* ─── ARTICLES ─── */
+    .a-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .acard {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+      box-shadow: var(--sh); transition: transform .25s, box-shadow .25s;
+    }
+    .acard:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
+    .acard-img { aspect-ratio: 16/9; overflow: hidden; }
+    .acard-img img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .4s; }
+    .acard:hover .acard-img img { transform: scale(1.05); }
+    .acard-body { padding: 1.4rem; }
+    .acard-type {
+      font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: .45rem;
+    }
+    .acard-body h4 {
+      font-family: var(--font-d); font-size: .98rem;
+      font-weight: 700; color: var(--ink);
+      margin-bottom: .5rem; line-height: 1.35;
+    }
+    .acard-body p {
+      font-size: .85rem; color: var(--muted);
+      line-height: 1.6; font-weight: 300; margin-bottom: .9rem;
+    }
+    .lnk {
+      font-size: .83rem; font-weight: 600; color: var(--accent);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: .3rem;
+      transition: gap .2s;
+    }
+    .lnk:hover { gap: .55rem; }
+
+    /* ─── EXPERIENCE ─── */
+    .exp-item {
+      display: grid; grid-template-columns: 210px 1fr;
+      gap: 3rem; padding: 2.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-logo-box {
+      width: 46px; height: 46px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      padding: 4px; margin-bottom: .65rem; box-shadow: var(--sh);
+    }
+    .exp-logo-box img { width:100%; height:100%; object-fit:contain; }
+    .exp-co {
+      font-family: var(--font-d);
+      font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: .1rem;
+    }
+    .exp-period { font-size: .78rem; color: var(--muted); font-weight: 500; }
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; padding-top: .1rem; }
+    .exp-list li {
+      display: flex; align-items: flex-start; gap: .7rem;
+      font-size: .92rem; color: var(--ink2); font-weight: 300;
+    }
+    .exp-list li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: .6em;
+    }
+
+    /* ─── EDUCATION ─── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-bottom: 2.25rem; }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.6rem 1.8rem;
+      display: flex; align-items: flex-start; gap: 1.1rem;
+      box-shadow: var(--sh);
+    }
+    .edu-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: .05rem; }
+    .edu-deg {
+      font-family: var(--font-d); font-size: 1rem;
+      font-weight: 700; color: var(--ink); margin-bottom: .15rem;
+    }
+    .edu-school { font-size: .83rem; color: var(--muted); }
+    .badges-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .badges-row > div {
+      min-width: 150px;
+      min-height: 270px;
+    }
+
+    /* ─── SKILLS ─── */
+    .skills-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; }
+    .skill-row {
+      display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1.2rem;
+    }
+    .skill-lbl {
+      font-size: .87rem; font-weight: 500; color: var(--ink2);
+      width: 115px; flex-shrink: 0;
+    }
+    .skill-track {
+      flex: 1; height: 6px; background: var(--surface3);
+      border-radius: 999px; overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 999px;
+    }
+    .skill-pct { font-size: .77rem; font-weight: 600; color: var(--muted); width: 32px; text-align: right; flex-shrink: 0; }
+    .skills-aside { display: flex; flex-direction: column; gap: 1.25rem; }
+    .s-aside-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.6rem;
+      box-shadow: var(--sh);
+    }
+    .s-aside-card h4 {
+      font-family: var(--font-d); font-size: .98rem;
+      font-weight: 700; color: var(--ink); margin-bottom: .7rem;
+    }
+    .s-aside-card p { font-size: .87rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .s-aside-card ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .s-aside-card li {
+      font-size: .87rem; color: var(--muted);
+      display: flex; align-items: flex-start;
+      gap: .6rem; font-style: italic; line-height: 1.55;
+    }
+    .s-aside-card li::before { content: '✦'; color: var(--accent2); font-size: .6rem; margin-top: .35em; font-style: normal; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--surface3);
+      border-top: 1px solid var(--border);
+      padding: 2.25rem 3.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-copy { font-size: .83rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: .83rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ─── TOAST ─── */
+    .toast-wrap {
+      max-width: 1240px; margin: 5rem auto 0; padding: 0 3.5rem;
+    }
+    .toast-inner {
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-bd);
+      border-radius: 10px; padding: .7rem 1.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: .86rem; color: var(--accent); font-weight: 500;
+    }
+    .toast-x {
+      background: none; border: none; color: var(--accent);
+      cursor: pointer; font-size: 1.1rem; opacity: .55; padding: 0;
+    }
+    .toast-x:hover { opacity: 1; }
+
+    /* ─── REVEAL ANIMATION ─── */
+    .rv { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .rv.in { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: .9rem 1.5rem; }
+      .nav-links { display: none; }
+      .cover-img { height: 240px; margin-top: 58px; }
+      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem 3rem; }
+      .wrap { padding: 4rem 1.5rem; }
+      .about-grid, .skills-layout, .spotlight { grid-template-columns: 1fr; gap: 2rem; }
+      .t-grid, .a-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: .9rem; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .toast-wrap { padding: 0 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
 
-	<!-- Header-->
-	<header>
-		<h1>Rishan Shah</h1>
-		<p>Data Scientist and Tech Enthusiast</p>
-		<section style = "margin-bottom:2em" class="navbar-section">
-		<a href="#education" style = "color:#3d7ce2; " class="btn btn-link">Experience</a>
-		<a href="contactme/index.html" style = "color:#3d7ce2; " class="btn btn-link">Contact</a>
-		<a href="https://uk.linkedin.com/in/rishan-shah-5ab726104" style = "color:#3d7ce2;" class="btn btn-link">LinkedIn <i class="fab fa-linkedin"></i></a>
-		</section>
-	</header>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Rishan Shah</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#articles">Writing</a></li>
+    <li><a href="contactme/index.html" class="nav-pill">Contact</a></li>
+  </ul>
+</nav>
 
-	<div class="container">
+<!-- TOAST -->
+<div class="toast-wrap" id="tw">
+  <div class="toast-inner">
+    <span>⚡ This website is always evolving — check back for updates.</span>
+    <button class="toast-x" onclick="document.getElementById('tw').style.display='none'">×</button>
+  </div>
+</div>
 
+<!-- COVER IMAGE -->
+<div class="cover-img">
+  <img src="img/background.jpg" alt="Cover">
+</div>
 
-		<div style = "margin-bottom:1em" class="toast toast-warning" id="warning toast">
-	  <button class="btn btn-clear float-right" onclick = "myFunction()"></button>
-	   Warning this website is always experiencing changes
-		</div>
-		<!-- Introduction-->
-		<section class="center">
-			<h1>Welcome!</h1>
-			<p>
-				Thanks for stopping by! Here you will find some of the things I have made and been involved in.
-				I love all things Data Science and also have a deep interest in Cosmology and Theoretical Physics
-			</p>
-		</section>
-
-		<!-- <hr> -->
-
-		<!-- Gallery Block-->
-		<!-- <section class="gallery">
-			<h1 class="center">Gallery</h1>
-			<div class="row">
-				<a href="#"><img src="img/re.png" class="grid-2"></a>
-				<a href="#"><img src="img/re.png" class="grid-2"></a>
-				<a href="#"><img src="img/re.png" class="grid-2"></a>
-				<a href="#"><img src="img/re.png" class="grid-2"></a>
-				<a href="#"><img src="img/re.png" class="grid-2"></a>
-				<a href="#"><img src="img/re.png" class="grid-2"></a>
-			</div>
-		</section> -->
-
-		<hr>
-
-		<!-- Testimonials-->
-		<section class="testimonial">
-			<div class="row">
-				<div class="grid-2">
-					<img class="img-fit-cover ..." src="img/Perumal.jpeg">
-					<h2>Perumal Kumaresa</h2>
-					<p ><a href ='https://www.linkedin.com/in/perumal-s-k-57053a5b/'>(Data Science Manager) <i class="fab fa-linkedin"></i></a></p>
-					<p>"I had the opportunity to work closely with Rishan on multiple initiatives and projects at Data Reply.
-						Rishan is one of the hard and technically sound people, he is self-motivated and thrives to learn and share knowledge where ever he can.
-						I am sure his continuous hunger to learn and innovative thinking by applying AI & Machine learning to solve real-life & business problems will be valuable for any company he is part of.
-						I highly recommend Rishan Shah for his machine learning & analytical skills alongside his excellent presentation and delivery ability."
-					</p>
-				</div>
-
-				<div class="grid-2">
-					<img class="img-fit-cover ..." src="img/stefan.jpg">
-					<h2>Stefan Blaginov</h2>
-					<p ><a href ='https://uk.linkedin.com/in/stefanblaginov'>(Blockchain Engineer) <i class="fab fa-linkedin"></i></a></p>
-					<p>"I've rarely met someone that can grasp new concepts as quickly as Rishan.
-						This along with his well-developed mathematical intuition, made working
-						with him a pleasure."
-					</p>
-				</div>
-
-
-
-				<div class="grid-2">
-					<img src="img/jonathan.jpg">
-					<h2>Jonathan Orritt</h2>
-					<p ><a href ='https://uk.linkedin.com/in/jonathanorritt'>(Data Scientist) <i class="fab fa-linkedin"></i></a></p>
-					<p>"Rishan was a core asset to the Payments Data Lab at Santander. He demonstrated a broad range of core Data Science
-						skills and excelled within his role. His ability to apply advanced machine learning to applicable business
-						problems was invaluable."
-					</p>
-				</div>
-			</div>
-		</section>
-	</div> <!-- End container-->
-
-	<!-- Spotlight -->
-	<section class="spotlight">
-		<div class="container">
-			<div class="row">
-				<div class="grid-3">
-  				<img src="img/robot.jpeg" class="img-responsive ...">
-				</div>
-				<div class="grid-3">
-					<h1>Project Spotlight</h1>
-					<p> Got really into one of my personal projects into understanding how reinforcement learning works
-					and decided to give it a shot. Ended up creating a "Deep Q Reinforcement Learning model" that optimises price based on a cost sensitive
-				poisson arrival distribution</p>
-					<a target="_blank" href="project/index.html">View Project</a>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class = "somethinginteresting">
-  	<div class = 'container'>
-      <details class="accordion">
-        	<summary class="accordion-header">
-
-          	<h1><i class="icon icon-arrow-right mr-1"></i>Something Interesting</h1>
-        	</summary>
-        	<div style="padding: 0.5em; max-height:1000rem" class="accordion-body">
-						<div style="box-shadow:2px 2px 5px grey;margin-bottom:2em" class="card">
-						  <div class="card-image">
-						    <img src="img/Barabasi.jpeg" class="img-responsive">
-						  </div>
-						  <div class="card-header">
-						    <div class="card-title h5">Article: Network Analysis Watford's Vehicular Road Network</div>
-						    <!-- <div class="card-subtitle text-gray">...</div> -->
-						  </div>
-						  <div class="card-body">
-								<p>
-								A really interesting and exiting project as part of my masters programme whereby I analyse vehicular
-								road networks in Watford and apply Network Science Techniques to establish vulnerabilities
-								</p>
-
-						  </div>
-						  <div class="card-footer">
-						   	<a target="_blank" href="article/Social_Networks_and_Text_Analysis.pdf">View</a>
-						  </div>
-						</div>
-						<div style="box-shadow:2px 2px 5px grey;margin-bottom:2em" class="card">
-						  <div class="card-image">
-						    <img src="img/svd.png" class="img-responsive">
-						  </div>
-						  <div class="card-header">
-						    <div class="card-title h5">Article: Latent Semantic Indexing with Weighted Cosine in Low Rank Appoximation</div>
-						    <!-- <div class="card-subtitle text-gray">...</div> -->
-						  </div>
-						  <div class="card-body">
-								<p>
-								Here is an article about something I came across but wasn't documented anywhere. I attempt to approximate
-								matches of sentences with an importance on words in a highly compressed storable form
-								</p>
-
-						  </div>
-						  <div class="card-footer">
-						   	<a target="_blank" href="article/Latent_Semantic_Indexing_with_Weighted_Cosine.pdf">View</a>
-						  </div>
-						</div>
-						<div style="box-shadow:2px 2px 5px grey;" class="card">
-						  <div class="card-image">
-						    <img src="img/calendar.jpeg" class="img-responsive">
-						  </div>
-						  <div class="card-header">
-						    <div class="card-title h5">Oshwal Calendar</div>
-						    <!-- <div class="card-subtitle text-gray">...</div> -->
-						  </div>
-						  <div class="card-body">
-								<p>
-								I decided to put some of my new knowledge to use and built a NodeJS calender subscription API
-								for my community events which my family follows. I deployed this into heroku. Unfortunately, this
-								doesn't work for Android devices since they dont support the webcal protocol.
-								</p>
-
-						  </div>
-						  <div class="card-footer">
-						   	<a target="_blank" href="http://apricot-crumble-13119.herokuapp.com">Subscribe</a>
-						  </div>
-						</div>
-
-
-        	</div>
-      </details>
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-left rv">
+    <div class="hero-eyebrow"><span></span>Data Scientist &amp; Tech Enthusiast</div>
+    <h1 class="hero-name">Rishan<br><em>Shah.</em></h1>
+    <p class="hero-bio">
+      Building intelligent systems at the intersection of machine learning,
+      data science, and real-world business impact. Based in the UK.
+    </p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-solid">View Experience →</a>
+      <a href="https://uk.linkedin.com/in/rishan-shah-5ab726104" class="btn-ghost" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="contactme/index.html" class="btn-ghost">Contact Me</a>
     </div>
+  </div>
+
+  <div class="hero-cards rv" style="transition-delay:.15s">
+    <div class="hcard">
+      <div class="hcard-label">At a glance</div>
+      <div class="hcard-nums">
+        <div>
+          <div class="hcard-stat-n">7+</div>
+          <div class="hcard-stat-l">Years in industry</div>
+        </div>
+        <div>
+          <div class="hcard-stat-n">3</div>
+          <div class="hcard-stat-l">AWS certifications</div>
+        </div>
+        <div>
+          <div class="hcard-stat-n">MSc.</div>
+          <div class="hcard-stat-l">Data Science</div>
+        </div>
+        <div>
+          <div class="hcard-stat-n">4</div>
+          <div class="hcard-stat-l">Companies</div>
+        </div>
+      </div>
+    </div>
+    <div class="hcard">
+      <div class="hcard-label">Specialisms</div>
+      <div class="hcard-pills">
+        <span class="hpill">Python</span>
+        <span class="hpill">PySpark</span>
+        <span class="hpill">ML</span>
+        <span class="hpill">Deep Learning</span>
+        <span class="hpill">NLP</span>
+        <span class="hpill">RL</span>
+        <span class="hpill">Graph ML</span>
+        <span class="hpill">AWS</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="bg-white" id="about">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">About</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="about-grid rv">
+      <div class="about-text">
+        <p>Thanks for stopping by! Here you'll find some of the things I've made and been involved in. I love all things Data Science and have a deep interest in Cosmology and Theoretical Physics.</p>
+        <p>Rapidly progressing in my knowledge of cutting-edge techniques in data science — always willing to sponge up whatever knowledge more experienced people are open to offer.</p>
+        <p>I've worked across FSI, Real Money Gaming, travel, and banking industries, bringing machine learning to real, tangible business problems.</p>
+        <div class="pill-row">
+          <span class="pill">Python</span>
+          <span class="pill">PySpark</span>
+          <span class="pill">Machine Learning</span>
+          <span class="pill">Deep Learning</span>
+          <span class="pill">NLP</span>
+          <span class="pill">Reinforcement Learning</span>
+          <span class="pill">AWS</span>
+          <span class="pill">Graph ML</span>
+          <span class="pill">Time Series</span>
+          <span class="pill">SQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="bg-warm" id="testimonials">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Testimonials</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="t-grid">
+      <div class="tcard rv">
+        <div class="tcard-mark">"</div>
+        <p class="tcard-quote">Rishan is self-motivated and thrives to learn and share knowledge wherever he can. His continuous hunger to learn and innovative thinking by applying AI &amp; Machine Learning to solve real-life problems will be valuable for any company he is part of.</p>
+        <div class="tcard-foot">
+          <img src="img/Perumal.jpeg" alt="Perumal Kumaresa">
+          <div>
+            <div class="tcard-name">Perumal Kumaresa</div>
+            <div class="tcard-role"><a href="https://www.linkedin.com/in/perumal-s-k-57053a5b/" target="_blank">Data Science Manager</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard rv" style="transition-delay:.1s">
+        <div class="tcard-mark">"</div>
+        <p class="tcard-quote">I've rarely met someone that can grasp new concepts as quickly as Rishan. This along with his well-developed mathematical intuition made working with him a genuine pleasure.</p>
+        <div class="tcard-foot">
+          <img src="img/stefan.jpg" alt="Stefan Blaginov">
+          <div>
+            <div class="tcard-name">Stefan Blaginov</div>
+            <div class="tcard-role"><a href="https://uk.linkedin.com/in/stefanblaginov" target="_blank">Blockchain Engineer</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard rv" style="transition-delay:.2s">
+        <div class="tcard-mark">"</div>
+        <p class="tcard-quote">Rishan was a core asset to the Payments Data Lab at Santander. His ability to apply advanced machine learning to applicable business problems was invaluable.</p>
+        <div class="tcard-foot">
+          <img src="img/jonathan.jpg" alt="Jonathan Orritt">
+          <div>
+            <div class="tcard-name">Jonathan Orritt</div>
+            <div class="tcard-role"><a href="https://uk.linkedin.com/in/jonathanorritt" target="_blank">Data Scientist</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-	<!-- New container-->
-	<div class="container">
+<!-- SPOTLIGHT -->
+<section class="bg-white" id="projects">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Project Spotlight</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="spotlight rv">
+      <div class="spotlight-img">
+        <img src="img/robot.jpeg" alt="Reinforcement Learning Project">
+      </div>
+      <div class="spotlight-body">
+        <div class="spotlight-tag">Featured Project</div>
+        <h3>Deep Q Reinforcement Learning for Dynamic Pricing</h3>
+        <p>Explored how reinforcement learning works and built a Deep Q model that optimises price based on a cost-sensitive Poisson arrival distribution — a self-driven project pushing into the frontier of applied RL.</p>
+        <a href="project/index.html" class="btn-accent">View Project →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-		<section id="education" class="education">
-			<h2>BSc. Mathematics, Operational Research and Statistics from University of Cardiff.</h2>
-		</section>
+<!-- ARTICLES -->
+<section class="bg-warm" id="articles">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Something Interesting</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="a-grid">
+      <div class="acard rv">
+        <div class="acard-img"><img src="img/Barabasi.jpeg" alt="Network Analysis"></div>
+        <div class="acard-body">
+          <div class="acard-type">Research Article</div>
+          <h4>Network Analysis: Watford's Vehicular Road Network</h4>
+          <p>Applying Network Science techniques to vehicular road networks to establish vulnerabilities.</p>
+          <a href="article/Social_Networks_and_Text_Analysis.pdf" target="_blank" class="lnk">Read Article →</a>
+        </div>
+      </div>
+      <div class="acard rv" style="transition-delay:.1s">
+        <div class="acard-img"><img src="img/svd.png" alt="LSI"></div>
+        <div class="acard-body">
+          <div class="acard-type">Technical Article</div>
+          <h4>Latent Semantic Indexing with Weighted Cosine in Low Rank Approximation</h4>
+          <p>Approximating sentence matches with word-importance weighting in compressed form.</p>
+          <a href="article/Latent_Semantic_Indexing_with_Weighted_Cosine.pdf" target="_blank" class="lnk">Read Article →</a>
+        </div>
+      </div>
+      <div class="acard rv" style="transition-delay:.2s">
+        <div class="acard-img"><img src="img/calendar.jpeg" alt="Calendar API"></div>
+        <div class="acard-body">
+          <div class="acard-type">Side Project</div>
+          <h4>Oshwal Calendar — NodeJS Subscription API</h4>
+          <p>A calendar subscription API for community events, deployed on Heroku.</p>
+          <a href="http://apricot-crumble-13119.herokuapp.com" target="_blank" class="lnk">Subscribe →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-		<hr>
-		<section id="education1" class="education">
-			<h2>MSc. Data Science from University of Exeter.</h2>
-		</section>
-		<hr>
-		<section id="education2" class="education">
-			<div class = "row">
-				<div class = "grid-2">
-					<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="058803b5-9493-4b23-be70-dee7f9104ccf" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-				</div>
-				<div class = "grid-2">
-					<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b12d25b4-bc3c-4f99-9950-b8b2b8f33879" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-				</div>
-				<div class = "grid-2">
-					<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="8af79dad-3a1c-421a-bcc7-545b1a504963" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-				</div>
-			</div>
+<!-- EXPERIENCE -->
+<section class="bg-warmer" id="experience">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Experience</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="exp-item rv">
+      <div>
+        <div class="exp-logo-box"><img src="img/reply.png" alt="Reply"></div>
+        <div class="exp-co">Reply</div>
+        <div class="exp-period">Dec 2021 – Present</div>
+      </div>
+      <ul class="exp-list">
+        <li>Time series forecasting and association rules.</li>
+        <li>Graph Machine Learning across FSI and Real Money Gaming industries.</li>
+        <li>AWS Machine Learning – Speciality accreditation.</li>
+        <li>AWS Certified Cloud Practitioner &amp; AI Practitioner accreditations.</li>
+        <li>Dataiku ML Practitioner accreditation.</li>
+      </ul>
+    </div>
+    <div class="exp-item rv">
+      <div>
+        <div class="exp-logo-box"><img src="img/tui.png" alt="TUI"></div>
+        <div class="exp-co">TUI</div>
+        <div class="exp-period">May 2019 – Dec 2021</div>
+      </div>
+      <ul class="exp-list">
+        <li>Engaged with NLP use cases across the business.</li>
+        <li>Reinforcement Learning using gym, coach &amp; tfagents.</li>
+        <li>Extensive use of AWS SageMaker.</li>
+      </ul>
+    </div>
+    <div class="exp-item rv">
+      <div>
+        <div class="exp-logo-box"><img src="img/santander.png" alt="Santander"></div>
+        <div class="exp-co">Santander</div>
+        <div class="exp-period">Sep 2017 – Apr 2019</div>
+      </div>
+      <ul class="exp-list">
+        <li>Hadoop and Spark for cleaning and enriching large-scale data.</li>
+        <li>Insights via scikit-learn, pandas, plotly, seaborn, keras and tensorflow.</li>
+        <li>Worked within Agile team methodologies.</li>
+      </ul>
+    </div>
+    <div class="exp-item rv">
+      <div>
+        <div class="exp-logo-box"><img src="img/caci.png" alt="CACI"></div>
+        <div class="exp-co">CACI</div>
+        <div class="exp-period">May 2017 – Aug 2017</div>
+      </div>
+      <ul class="exp-list">
+        <li>Delivering weekly reports to senior managers.</li>
+        <li>Insights through Adobe Analytics and Google Analytics.</li>
+        <li>Digital marketing strategy analysis for client websites.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-		</section>
-		<hr>
+<!-- EDUCATION -->
+<section class="bg-white" id="education">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">06</span>
+      <h2 class="sec-title">Education</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="edu-grid rv">
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-deg">BSc. Mathematics, Operational Research &amp; Statistics</div>
+          <div class="edu-school">University of Cardiff</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-deg">MSc. Data Science</div>
+          <div class="edu-school">University of Exeter</div>
+        </div>
+      </div>
+    </div>
+    <div class="badges-row">
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="058803b5-9493-4b23-be70-dee7f9104ccf" data-share-badge-host="https://www.credly.com"></div>
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b12d25b4-bc3c-4f99-9950-b8b2b8f33879" data-share-badge-host="https://www.credly.com"></div>
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="8af79dad-3a1c-421a-bcc7-545b1a504963" data-share-badge-host="https://www.credly.com"></div>
+    </div>
+  </div>
+</section>
 
-		<!--Experience Tables-->
-		<section class="experience">
-			<div class="row">
-				<div class="grid-2">
-					<h2>Reply</h2>
-					<p>Dec. 2021 - Present</p>
-					<figure class="avatar avatar-xl">
-  					<img src="img/reply.png" alt="...">
-					</figure>
-				</div>
-				<div class="grid-4">
-					<ul>
-						<li>Work with time series forecasting.</li>
-						<li>Work with Association Rules.</li>
-						<li>Work with Graph Machine Learning.</li>
-						<li>Work in FSI and Real Money Gaming industries.</li>
-						<li>AWS Machine Learning - Speciality accreditation.</li>
-						<li>AWS Certified Cloud Practitioner accreditation.</li>
-						<li>AWS Certified AI Practitioner accreditation.</li>
-						<li>Dataiku ML Practitioner accreditation.</li>
+<script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
-					</ul>
-				</div>
-			</div>
-			<div class="row">
-				<div class="grid-2">
-					<h2>TUI</h2>
-					<p>May. 2019 - Dec. 2021</p>
-					<figure class="avatar avatar-xl">
-  					<img src="img/tui.png" alt="...">
-					</figure>
-				</div>
-				<div class="grid-4">
-					<ul>
-						<li>Engaged with NLP uses cases.</li>
-						<li>Work with Reinforcement Learning.</li>
-						<li>Experience with gym, coach & tfagents.</li>
-						<li>Use of AWS Sagemaker.</li>
+<!-- SKILLS -->
+<section class="bg-warm">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">07</span>
+      <h2 class="sec-title">Skills</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="skills-layout">
+      <div class="rv">
+        <div class="skill-row"><span class="skill-lbl">Python</span><div class="skill-track"><div class="skill-fill" style="width:95%"></div></div><span class="skill-pct">95%</span></div>
+        <div class="skill-row"><span class="skill-lbl">PySpark</span><div class="skill-track"><div class="skill-fill" style="width:95%"></div></div><span class="skill-pct">95%</span></div>
+        <div class="skill-row"><span class="skill-lbl">SQL</span><div class="skill-track"><div class="skill-fill" style="width:100%"></div></div><span class="skill-pct">100%</span></div>
+        <div class="skill-row"><span class="skill-lbl">Data Science</span><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
+        <div class="skill-row"><span class="skill-lbl">Machine Learning</span><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
+        <div class="skill-row"><span class="skill-lbl">Deep Learning</span><div class="skill-track"><div class="skill-fill" style="width:75%"></div></div><span class="skill-pct">75%</span></div>
+        <div class="skill-row"><span class="skill-lbl">AI Engineering</span><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
+        <div class="skill-row"><span class="skill-lbl">Git</span><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div><span class="skill-pct">90%</span></div>
+      </div>
+      <div class="skills-aside rv" style="transition-delay:.15s">
+        <div class="s-aside-card">
+          <h4>In Conclusion</h4>
+          <p>Rapidly progressing in cutting-edge data science techniques — always willing to sponge up whatever knowledge more experienced people are open to offer.</p>
+        </div>
+        <div class="s-aside-card">
+          <h4>Guiding Principles</h4>
+          <ul>
+            <li>Data Science is not Rocket Science — you only need to know which tools and technologies to use.</li>
+            <li>Data Science is not for the well-learned, but the data hungry.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© Rishan Shah 2026</div>
+  <div class="footer-links">
+    <a href="#top">Back to top ↑</a>
+    <a href="https://uk.linkedin.com/in/rishan-shah-5ab726104" target="_blank">LinkedIn</a>
+    <a href="contactme/index.html">Contact</a>
+  </div>
+</footer>
 
-					</ul>
-				</div>
-			</div>
-			<div class="row">
-				<div class="grid-2">
-					<h2>Santander</h2>
-					<p>Sep. 2017 - Apr. 2019</p>
-					<figure class="avatar avatar-xl">
-						<img src="img/santander.png" alt="...">
-					</figure>
-				</div>
-				<div class="grid-4">
-					<ul>
-						<li>Used Big Data technologies such as Hadoop and Spark to clean and enrich data.</li>
-						<li>Made use of Python libraries such as scikitlearn, pandas, plotly, seaborn, keras and tensorflow to deliver insights.</li>
-						<li>Worked with teams under "Agile" methodologies.</li>
-					</ul>
-				</div>
-			</div>
-			<div class="row">
-				<div class="grid-2">
-					<h2>CACI</h2>
-					<p>May. 2017 - Aug. 2017</p>
-					<figure class="avatar avatar-xl">
-						<img src="img/caci.png" alt="...">
-					</figure>
-				</div>
-				<div class="grid-4">
-					<ul>
-						<li>Delivering weekly reports to senior managers.</li>
-						<li>Creation of insights through the use of Adobe Analytics and Google Analytics.</li>
-						<li>Understanding and exploiting digital marketing strategies that overlayed client websites.</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-
-		<hr>
-
-		<section>
-			<!--List of skills-->
-			<div class="row">
-				<div class="grid-2">
-					<h1>Skills</h1>
-					<!-- <ul>
-						<li>Python</li>
-						<li>Pyspark</li>
-						<li>SQL</li>
-						<li>Data Science</li>
-						<li>Analysis</li>
-						<li>Machine Learning</li>
-						<li>Deep Learning</li>
-						<li>Git</li>
-					</ul> -->
-					<div class="bar" style = "margin-bottom: 30px;">
-						<div class="bar-item" role="progressbar" style="width:95%;text-align:left;text-indent:10px;background:#e4382c;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Python</div>
-					</div>
-					<div class="bar"  style = "margin-bottom: 30px;">
-						<div class="bar-item" role="progressbar" style="width:95%;text-align:left;text-indent:10px;background:#e4382c;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Pyspark</div>
-					</div>
-					<div class="bar"  style = "margin-bottom: 30px;">
-						<div class="bar-item" role="progressbar" style="width:100%;text-align:left;text-indent:10px;background:#e4382c;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">SQL</div>
-					</div>
-					<div class="bar"  style = "margin-bottom: 30px;">
-						<div class="bar-item" role="progressbar" style="width:85%;text-align:left;text-indent:10px;background:#e4382c;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Data Science</div>
-					</div>
-					<div class="bar"  style = "margin-bottom: 30px;">
-						<div class="bar-item" role="progressbar" style="width:85%;text-align:left;text-indent:10px;background:#e4382c;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Machine Learning</div>
-					</div>
-					<div class="bar"  style = "margin-bottom: 30px;">
-						<div class="bar-item" role="progressbar" style="width:75%;text-align:left;text-indent:10px;background:#e4382c;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Deep Learning</div>
-					</div>
-					<div class="bar"  style = "margin-bottom: 30px;">
-						<div class="bar-item" role="progressbar" style="width:90%;text-align:left;text-indent:10px;background:#e4382c;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Git</div>
-					</div>
-
-				</div>
-
-				<div class="grid-4">
-					<h1>In Conclusion</h1>
-					<p>
-						Rapidly progressing in my knowledge of the new cutting edge techniques
-						in data science. Always willing to sponge up whatever knowledge more experienced people
-						are open to offer. Lastly, I live by the following two wisdoms:
-					</p>
-					<ul>
-						<li>
-							Data Science is not Rocket Science, you only need to know which tools and
-						technologies to use
-						</li>
-						<li>Data Science is not for the well-learned but the data hungry
-						</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-
-
-
-		<!--Footer-->
-		<footer class="center">
-			<hr>
-			<span>&copy; Rishan Shah 2026</span>
-		</footer>
-
-	</div><!-- End Container -->
-
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
